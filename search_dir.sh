@@ -5,6 +5,7 @@ errorColor=$(echo -en '\033[01;31m')
 indicationColor=$(echo -en '\033[3;32m')
 hugeIndicationColor=$(echo -en '\033[5;37;41m')
 successColor=$(echo -en '\033[01;32m')
+exampleColor=$(echo -en '\033[01;34m')
 norm=$(echo -en '\033[0m')
 next=$'\n'
 doubleNext=$'\n\n'
@@ -41,7 +42,7 @@ function error {
 }
 
 function search_dir {
-    echo -n -e "${insertColor} Nom du projet à rechercher, sans espaces/tabulations, exemple:${doubleNext}${tab}${norm}${indicationColor} monProjet OU mon_projet${next}${tab} taper ${norm}${hugeIndicationColor}help${norm}${indicationColor} pour de l'aide ${next}${norm}\c"
+    echo -n -e "${insertColor} Nom du projet à rechercher, sans espaces/tabulations, exemple:${doubleNext}${tab}${norm}${exampleColor} monProjet ${norm}${indicationColor} OU ${norm}${exampleColor}mon_projet${norm}${next}${tab}${indicationColor} taper ${norm}${hugeIndicationColor}help${norm}${indicationColor} pour de l'aide ${next}${norm}\c"
     read newSrc
     declare -a checkSrc
     checkSrc=("${checkSrc[@]}" "$(find ~/ -name "${newSrc}")")
@@ -60,7 +61,9 @@ function search_dir {
         else
             touch ~/bin/bash/savePath.sh
             chmod +x savePath.sh
-            echo -e "${insertColor} suiver les instructions: ${norm}${doubleNext}${tab}${indicationColor} copier/coller le bon chemin d'accès ${next}${tab} puis appuyer sur entrée ${next}${tab} enfin, appuyer sur CTRL+D ${norm}"
+            echo -e "${insertColor} suiver les instructions: ${norm}"
+            find ~/ -name "${newSrc}"
+            echo -e "${doubleNext}${tab}${indicationColor} copier/coller le bon chemin d'accès du projet parmi ceux de la liste ci-dessus ${next}${tab} puis appuyer sur ${norm}${hugeIndicationColor}entrée${norm}${next}${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D${norm}"
             cat >~/bin/bash/savePath.sh
         fi
 
