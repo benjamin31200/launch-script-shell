@@ -67,3 +67,4 @@ Les deux sites regroupant la plupart des notions utiles aux scripts shell.
 [Doc officiel ubuntu](https://doc.ubuntu-fr.org/tutoriel/script_shell)
 
 [Guide avancé](https://abs.traduc.org/abs-fr/index.html)
+# dd
