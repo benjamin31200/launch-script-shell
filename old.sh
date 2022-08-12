@@ -37,12 +37,23 @@ function error {
         search_dir
     elif [ "$y_n" = "$non" ]; then
         echo "Sortie des configurations..."
-        bash "$(find ./ -name startProject.sh)"
+        bash "$(find ./ -name start.sh)"
     fi
 }
 
+function process {
+    echo -e "${insertColor} suiver les instructions: ${norm}"
+    find ~/ -name "${1}"
+    echo -e "${doubleNext}${tab}${indicationColor} copier/coller le bon chemin d'accès du projet parmi ceux de la liste ci-dessus${tab}${norm}"
+    echo -e  "${tab}${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée${norm}"
+    echo -e "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D${norm}${next}"
+    cat >>"$(find ./ -name path.sh)"
+}
+
 function search_dir {
-    echo -n -e "${insertColor} Nom du projet à rechercher, sans espaces/tabulations, exemple:${doubleNext}${tab}${norm}${exampleColor} monProjet ${norm}${indicationColor} OU ${norm}${exampleColor}mon_projet${norm}${next}${tab}${indicationColor} taper ${norm}${hugeIndicationColor}help${norm}${indicationColor} pour de l'aide ${next}${norm}\c"
+    echo -n -e "${insertColor} Nom du projet à rechercher, sans espaces/tabulations, exemple:${doubleNext}${tab}${norm}"
+    echo -e "${exampleColor} monProjet ${norm}${indicationColor} OU ${norm}${exampleColor}mon_projet${norm}"
+    echo -e "${tab}${indicationColor} taper ${norm}${hugeIndicationColor}help${norm}${indicationColor} pour de l'aide ${next}${norm}"
     read newSrc
     declare -a checkSrc
     checkSrc=("${checkSrc[@]}" "$(find ~/ -name "${newSrc}")")
@@ -50,27 +61,16 @@ function search_dir {
         find_gitignore
     elif [ ${#checkSrc[0]} -gt 0 ]; then
         echo -e "${answerColor} Processus d'enregistrement du nouveau projet: ${norm}"
-        if [ -e "savePath.sh" ]; then
-            rm -rf ~/savePath.sh
-            touch ~/bin/bash/savePath.sh
-            chmod +x savePath.sh
-            echo -e "${insertColor} suiver les instructions: ${norm}"
-            find ~/ -name "${newSrc}"
-            echo -e "${doubleNext}${tab}${indicationColor} copier/coller le bon chemin d'accès du projet parmi ceux de la liste ci-dessus ${next}${tab} puis appuyer sur ${norm}${hugeIndicationColor}entrée${norm}${next}${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D${norm}"
-            cat >~/bin/bash/savePath.sh
+        if [ -e "path.sh" ]; then
+            touch ~/bin/bash/path.sh
+            chmod +x "$(find ./ -name path.sh)"
+            process "${newSrc}"
         else
-            touch ~/bin/bash/savePath.sh
-            chmod +x savePath.sh
-            echo -e "${insertColor} suiver les instructions: ${norm}"
-            find ~/ -name "${newSrc}"
-            echo -e "${doubleNext}${tab}${indicationColor} copier/coller le bon chemin d'accès du projet parmi ceux de la liste ci-dessus ${next}${tab} puis appuyer sur ${norm}${hugeIndicationColor}entrée${norm}${next}${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D${norm}"
-            cat >~/bin/bash/savePath.sh
+            process "${newSrc}"
         fi
-
-        #Lance le nouveau dossier/fichier dans votre éditeur de code
         echo -e "${answerColor} Enregistrement du projet réussi !${norm}"
-        echo -e "${answerColor} démarrage en cours...${norm}"
-        code "$(cat ./savePath.sh)"
+        #code "$(cat "$(find ./ -name path.sh)")"
+        bash "$(find ./ -name start.sh)"
         exit 0
     else
         error

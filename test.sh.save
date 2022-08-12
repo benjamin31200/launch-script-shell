@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tableau1="$(cat array.sh)"
+echo "${tableau1}"
+
+
+
