@@ -1,13 +1,13 @@
 #!/bin/bash
-insertColor=$(echo -en '\033[1;33;4m')
-answerColor=$(echo -en '\033[01;35m')
+set -o posix
+insertColor='\033[1;33;4m'
+answerColor='\033[01;35m'
 importantColor=$(echo -en '\033[01;31m')
-indicationColor=$(echo -en '\033[3;32m')
-hugeIndicationColor=$(echo -en '\033[5;37;41m')
-successColor=$(echo -en '\033[01;32m')
+indicationColor='\033[3;32m'
+hugeIndicationColor='\033[5;37;41m'
 exampleColor=$(echo -en '\033[01;34m')
-norm=$(echo -en '\033[0m')
-next=$'\n'
+norm='\033[0m'
+n='\n'
 doubleNext=$'\n\n'
 tab=$'\t\t'
 yes=y
@@ -16,20 +16,20 @@ non=n
 path=~/
 
 function process {
-    echo -e "${insertColor} suiver les instructions: ${norm}"
+    printf "${insertColor} suiver les instructions: %s$n${norm}"
     find ~/ -wholename "${1}"
-    echo -e "${doubleNext}${tab}${indicationColor} copier/coller le chemin d'accès du projet.${tab}${norm}"
-    echo -e "${tab}${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée${norm}"
-    echo -e "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D${norm}${next}"
+    printf "${doubleNext}${tab}${indicationColor} copier/coller le chemin d'accès du projet.%s$n${tab}${norm}"
+    printf "${tab}${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s$n${norm}"
+    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s$n${norm}"
     cat >>"$(find ~/ -name path.sh)"
 }
 
 function addDir {
     min=1
-    echo -e "${insertColor}Rentrer le nom du dossier à chaque demande, s'il n'existe pas le créera automatiquement. ${norm}"
-    echo -e "${importantColor}IMPORTANT sans les / ${norm}"
-    echo -e "${insertColor}Taper ${norm}${hugeIndicationColor}exit${norm}${insertColor} pour confirmer le chemin et passer à la suite.${norm}"
-    echo -e "${insertColor}Taper ${norm}${hugeIndicationColor}l${norm}${insertColor} pour inspecter le répertoire courant.${norm}"
+    printf "${insertColor}Rentrer le nom du dossier à chaque demande, s'il n'existe pas le créera automatiquement. %s$n${norm}"
+    printf "${importantColor}IMPORTANT sans les / %s$n${norm}"
+    printf "${insertColor}Taper ${norm}${hugeIndicationColor}exit${norm}${insertColor} pour confirmer le chemin et passer à la suite.%s$n${norm}"
+    printf "${insertColor}Taper ${norm}${hugeIndicationColor}l${norm}${insertColor} pour inspecter le répertoire courant.%s$n${norm}"
     for ((i = 0; i < min; i++)); do
         echo -n -e "${insertColor}Nom du dossier: ${norm}"
         read dir
@@ -37,14 +37,14 @@ function addDir {
             path+="${dir}"/
             ((min += 1))
             if [ -d "$(find ~/ -wholename "${path%?}")" ]; then
-                echo -e "${insertColor}Ce dossier existe.${norm}"
+                printf "${insertColor}Ce dossier existe.%s$n${norm}"
             else
-                echo -e "${insertColor}Création du dossier.${norm}"
+                printf "${insertColor}Création du dossier.%s$n${norm}"
                 mkdir "${path}"
             fi
-            echo -e "${insertColor}Aperçu du chemin: ${norm}${exampleColor}${path}${norm}${next}"
+            printf "${insertColor}Aperçu du chemin: ${norm}${exampleColor}${path}${norm}%s$n"
         elif [ "${dir}" = "exit" ]; then
-            echo -e "${insertColor} Sortie...${norm}"
+            printf "${insertColor} Sortie...%s$n${norm}"
         elif [ "${dir}" = "l" ]; then
             cd "${path}" || exit
             ls -l
@@ -54,19 +54,19 @@ function addDir {
 }
 addDir
 cd "${path}" || exit
-echo -e "${insertColor}Processus d'enregistrement dans le répertoire${norm}${exampleColor}$(pwd)${norm}"
+printf "${insertColor}Processus d'enregistrement dans le répertoire${norm}${exampleColor}$(pwd)%s$n${norm}"
 echo -n -e "${insertColor}Suivre les consignes: ${norm}"
-echo -e "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}git${norm}${indicationColor} pour finaliser votre projet et créer un dépot git.${norm}"
-echo -e "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer la création.${norm}"
-echo -e "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances sur le projet nouvellement créer.${norm}"
-echo -e "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}gitclone${norm}${indicationColor} pour finaliser votre projet depuis un dépot git existant.${norm}"
-echo -e "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}save${norm}${indicationColor} pour enregistrer votre projet.${norm}"
+printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}git${norm}${indicationColor} pour finaliser votre projet et créer un dépot git.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer la création.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances sur le projet nouvellement créer.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}gitclone${norm}${indicationColor} pour finaliser votre projet depuis un dépot git existant.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}save${norm}${indicationColor} pour enregistrer votre projet.%s$n${norm}"
 read y_n
 case "${y_n}" in
 git)
     bash "$(find ~/ -name git.sh)"
     process "${path%?}"
-    echo -e "${answerColor} Projet enregistré ! ${norm}"
+    printf "${answerColor} Projet enregistré ! %s$n${norm}"
     bash "$(find ~/ -name start.sh)"
     ;;
 restart)
