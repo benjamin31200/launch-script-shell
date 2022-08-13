@@ -1,12 +1,13 @@
 #!/bin/bash
-insertColor=$(echo -en '\033[1;33;4m')
-answerColor=$(echo -en '\033[01;35m')
-importantColor=$(echo -en '\033[01;31m')
-indicationColor=$(echo -en '\033[3;32m')
-hugeIndicationColor=$(echo -en '\033[5;37;41m')
-successColor=$(echo -en '\033[01;32m')
-exampleColor=$(echo -en '\033[01;34m')
-norm=$(echo -en '\033[0m')
+set -o posix
+insertColor='\033[1;33;4m'
+answerColor='\033[01;35m'
+importantColor='\033[01;31m'
+indicationColor='\033[3;32m'
+hugeIndicationColor='\033[5;37;41m'
+successColor='\033[01;32m'
+exampleColor='\033[01;34m'
+norm='\033[0m'
 next=$'\n'
 doubleNext=$'\n\n'
 tab=$'\t\t'
@@ -22,8 +23,8 @@ if [ "$(which gh)" == /usr/bin/gh ]; then
     echo -n -e "${insertColor}dépôt privé ou public ? private/public ${norm}"
     read visibility
     echo "# dépôt créer le ${date}" >>README.md
-    gh repo create "${name}" --clone --description "Repo créer le ${date}" --gitignore VisualStudio --"${visibility}"
-    bash ./urlopener.sh https://github.com/"${pseudo}"/"${name}"
+    gh repo create "${name}" --clone --description "Repo créer le ${date}" --gitignore VisualStudio --"${visibility}" 
+    start chrome https://github.com/"${pseudo}"/"${name}"
 
 else
         curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
@@ -38,5 +39,5 @@ else
         read visibility
         echo "# dépôt créer le ${date}" >>README.md
         gh repo create "${name}" --clone --description "Repo créer le ${date}" --gitignore VisualStudio --"${visibility}"
-        bash ./urlopener.sh https://github.com/"${pseudo}"/"${name}"
+        start chrome https://github.com/"${pseudo}"/"${name}"
 fi
