@@ -12,43 +12,31 @@ doubleNext=$'\n\n'
 tab=$'\t\t'
 yes=y
 non=n
+date=$(date +%d-%m-%Y)
+pseudo=$(git config --global user.name)
 
-function checker() {
-    which "$1" | grep -o "$1" >/dev/null && return 0 || return 1
-}
-checker gh
-
-if checker "$1" == 0; then
-    echo "# dd" >>README.md
-    git init
-    git add README.md
-    git commit -m "first commit"
-    git branch -M master
+if [ "$(which gh)" == /usr/bin/gh ]; then
     gh auth login
-    gh repo create --public
-    git push -u origin master
+    echo -n -e "${insertColor}Nommer le repository ${norm}"
+    read name
+    echo -n -e "${insertColor}dépôt privé ou public ? private/public ${norm}"
+    read visibility
+    echo "# dépôt créer le ${date}" >>README.md
+    gh repo create "${name}" --clone --description "Repo créer le ${date}" --gitignore VisualStudio --"${visibility}"
+    bash ./urlopener.sh https://github.com/"${pseudo}"/"${name}"
+
 else
-    echo -n -e "${insertColor}Autoriser l'installation de CLI GitHub ? y/n ${norm}"
-    read y_n
-    if [ "$y_n" = "$yes" ]; then
         curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
         sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
         sudo apt update
         sudo apt install gh
-        echo "# dd" >>README.md
-        git init
-        git add README.md
-        git commit -m "first commit"
-        git branch -M master
         gh auth login
-        gh repo create --public
-        git push -u origin master
-    elif [ "$y_n" = "$non" ]; then
-        echo "# dd" >>README.md
-        git init
-        git add README.md
-        git commit -m "first commit"
-        git branch -M master
-    fi
+        echo -n -e "${insertColor}Nommer le repository ${norm}"
+        read name
+        echo -n -e "${insertColor}dépôt privé ou public ? private/public ${norm}"
+        read visibility
+        echo "# dépôt créer le ${date}" >>README.md
+        gh repo create "${name}" --clone --description "Repo créer le ${date}" --gitignore VisualStudio --"${visibility}"
+        bash ./urlopener.sh https://github.com/"${pseudo}"/"${name}"
 fi

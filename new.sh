@@ -70,7 +70,7 @@ git)
     bash "$(find ~/ -name start.sh)"
     ;;
 restart)
-    bash "$(find ~/ -wholename new.sh)"
+    bash "$(find ~/ -name new.sh)"
     ;;
 dependancies)
     echo "en construction"
