@@ -1,0 +1,19 @@
+{
+  "name": "bash",
+  "version": "1.0.0",
+  "description": "<p align = \"center\">   <img src = \"https://th.bing.com/th/id/OIP.bMPJwMQjUjRQi4lImi4iRwHaDH?w=300&h=146&c=7&r=0&o=5&pid=1.7\" width = 400 height=\"200\"> </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamin31200/launch-script-shell-ubuntu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjamin31200/launch-script-shell-ubuntu/issues"
+  },
+  "homepage": "https://github.com/benjamin31200/launch-script-shell-ubuntu#readme"
+}

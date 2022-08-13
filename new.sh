@@ -58,23 +58,29 @@ addDir
 cd "${path}" || exit
 printf "${insertColor}Processus d'enregistrement dans le répertoire${norm}${exampleColor}$(pwd)%s$n${norm}"
 echo -n -e "${insertColor}Suivre les consignes: ${norm}"
-printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}git${norm}${indicationColor} pour finaliser votre projet et créer un dépot git.%s$n${norm}"
-printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer la création.%s$n${norm}"
-printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances sur le projet nouvellement créer.%s$n${norm}"
+printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}git${norm}${indicationColor} pour créer votre dépot distant et local git.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer.%s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}menu${norm}${indicationColor} pour retourner au menu principal.%s$n${norm}"
 read y_n
 case "${y_n}" in
 git)
     bash "$(find ~/ -name git.sh)"
-    process "${path%?}"
-    printf "${answerColor} Projet enregistré ! %s$n${norm}"
-    bash "$(find ~/ -name menu.sh)"
+    echo -n -e "${doubleNext}${insertColor}Configurer des dépendances ou finaliser le projet ? ${norm}${hugeIndicationColor}configure${norm} / ${hugeIndicationColor}finish${norm}$n"
+    read answer
+    if [ "${answer}" = "configure" ]; then
+        cd "${path}" || exit
+        bash "$(find ~/ -name dependancies.sh)"
+    elif [ "${answer}" = "finish" ]; then
+        process "${path%?}"
+        printf "${answerColor} Projet enregistré ! %s$n${norm}"
+        bash "$(find ~/ -name menu.sh)"
+    fi
     ;;
 restart)
     bash "$(find ~/ -name new.sh)"
     ;;
-dependancies)
-    bash "$(find ~/ -name dependencies.sh)"
+menu)
+    bash "$(find ~/ -name menu.sh)"
     ;;
 esac
 exit 0
