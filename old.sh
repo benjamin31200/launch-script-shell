@@ -46,8 +46,8 @@ function process {
     printf "${insertColor} suiver les instructions: %s$n${norm}"
     find ~/ -name "${1}"
     printf "${doubleNext}${tab}${indicationColor} copier/coller le bon chemin d'accès du projet parmi ceux de la liste ci-dessus%s$n${tab}${norm}"
-    printf "${tab}${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s$n${norm}"
-    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s$n${norm}"
+    printf "${tab}${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
+    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
     cat >>"$(find ./ -name path.sh)"
 }
 
@@ -56,8 +56,7 @@ function search_dir {
     printf "${exampleColor} monProjet ${norm}${indicationColor} OU ${norm}${exampleColor}mon_projet%s$n${norm}"
     printf "${tab}${indicationColor} taper ${norm}${hugeIndicationColor}help${norm}${indicationColor} pour de l'aide %s$n${norm}"
     read newSrc
-    declare -a checkSrc
-    checkSrc=("${checkSrc[@]}" "$(find ~/ -name "${newSrc}")")
+    declare -a checkSrc=("${checkSrc[@]}" "$(find ~/ -name "${newSrc}")")
     if [ "$newSrc" = "Help" ] || [ "$newSrc" = "help" ]; then
         find_gitignore
     elif [ ${#checkSrc[0]} -gt 0 ]; then
