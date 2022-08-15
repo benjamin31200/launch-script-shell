@@ -16,17 +16,6 @@ non=n
 date=$(date +%d-%m-%Y)
 pseudo=$(git config --global user.name)
 
-createGit() {
-    gh auth login
-    echo -n -e "${insertColor}Nommer le repository ${norm}"
-    read name
-    echo -n -e "${insertColor}dépôt privé ou public ? private/public ${norm}"
-    read visibility
-    echo "# dépôt créer le ${date}" >>README.md
-    gh repo create "${name}" --clone --description "Repo créer le ${date}" --gitignore VisualStudio --"${visibility}"
-    printf "${answerColor} Lien du projet:${norm} https://github.com/${pseudo}/${name} %s"
-}
-
 createGitClone() {
     echo -n -e "${insertColor}Copier l'adresse https du dépot: ${norm}"
     read adress
@@ -35,12 +24,12 @@ createGitClone() {
 }
 
 if [ "$(which gh)" == /usr/bin/gh ]; then
-    createGit
+    createGitClone
 else
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
     sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
     sudo apt update
     sudo apt install gh
-    createGit
+    createGitClone
 fi

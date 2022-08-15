@@ -27,7 +27,6 @@ declare -a dependanciesLink=([0]="npx create-react-app" [1]="npm install express
     [17]="npm install sweetalert2" [18]="npm install cookie-parser" [19]="npm install --save sweetalert2-react-content"
     [20]="npm i -g @nestjs/cli ; nest new" [21]="npm install --save multer" [22]="npm install mongoose --save" [23]="npm install axios"
 )
-        "${dependanciesLink[0]}"
 
 init() {
     printf "$insertColor Copier/coller le lien https du repo github trouvable au-dessus %s$norm$n"
@@ -42,7 +41,7 @@ preconfigure() {
         init
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
-        "${dependanciesLink[0]}${name}"
+        ${dependanciesLink[0]} "${name}"
         ;;
     nest)
         init
@@ -57,14 +56,14 @@ preconfigure() {
         ${dependanciesLink[1]}
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
-        "${dependanciesLink[0]}${name}"
+        ${dependanciesLink[0]} "${name}"
         ;;
     reactNest)
         init
         ${dependanciesLink[20]}
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
-        "${dependanciesLink[0]}${name}"
+        ${dependanciesLink[0]} "${name}"
         ;;
     *)
         exit 0
@@ -86,6 +85,6 @@ if [ "${answer}" = "full" ]; then
     read answer
     preconfigure "${answer}"
 elif [ "${answer}" = "empty" ]; then
-    echo "empty"
+    bash "$(find ~/ -name arrayDependancies.sh)"
 fi
 exit 0

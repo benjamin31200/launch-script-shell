@@ -49,6 +49,10 @@ function process {
     printf "${tab}${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
     printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
     cat >>"$(find ./ -name path.sh)"
+    printf "${insertColor}Nommer votre projet: %s$n${norm}"
+    printf "${indicationColor} Appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
+    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
+    cat >>"$(find ~/ -name name.sh)"
 }
 
 function search_dir {
@@ -69,8 +73,7 @@ function search_dir {
             process "${newSrc}"
         fi
         printf "${answerColor} Enregistrement du projet réussi !%s$n${norm}"
-        #code "$(cat "$(find ./ -name path.sh)")"
-        bash "$(find ./ -name start.sh)"
+        bash "$(find ./ -name menu.sh)"
         exit 0
     else
         error

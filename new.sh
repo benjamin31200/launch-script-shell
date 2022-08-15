@@ -4,6 +4,7 @@ insertColor='\033[1;33;4m'
 answerColor='\033[01;35m'
 importantColor='\033[01;31m'
 successColor='\033[1;32m'
+greenColor='\033[1;37;42m'
 creationColor='\033[1;35m'
 indicationColor='\033[3;32m'
 hugeIndicationColor='\033[5;37;41m'
@@ -17,16 +18,30 @@ non=n
 
 path=~/
 
-function process {
+process() {
     printf "${doubleNext}${insertColor} suiver les instructions: %s$n${norm}"
     find ~/ -wholename "${1}"
     printf "${doubleNext}${tab}${indicationColor} copier/coller le chemin d'accès du projet.%s$n${tab}${norm}"
     printf "${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
     printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
     cat >>"$(find ~/ -name path.sh)"
+    printf "${insertColor}Nommer votre projet: %s$n${norm}"
+    printf "${indicationColor} Appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
+    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
+    cat >>"$(find ~/ -name name.sh)"
 }
 
-function addDir {
+createProject() {
+    if [ -e "name.sh" ]; then
+        touch ~/bin/bash/name.sh
+        chmod +x "$(find ./ -name name.sh)"
+        process "$1"
+    else
+        process "$1"
+    fi
+}
+
+addDir() {
     min=1
     printf "${insertColor}Rentrer le nom du dossier à chaque demande, s'il n'existe pas le créera automatiquement. %s$n${norm}"
     printf "${importantColor}IMPORTANT sans les / %s$n${norm}"
@@ -58,28 +73,36 @@ addDir
 cd "${path}" || exit
 printf "${insertColor}Processus d'enregistrement dans le répertoire${norm}${exampleColor}$(pwd)%s$n${norm}"
 echo -n -e "${insertColor}Suivre les consignes: ${norm}"
-printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}git${norm}${indicationColor} pour créer votre dépot distant et local git.%s$n${norm}"
+printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances. %s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer.%s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}menu${norm}${indicationColor} pour retourner au menu principal.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}finish${norm}${indicationColor} pour finaliser et enregistrer votre projet.%s$n${norm}"
+printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}gitClone${norm}${indicationColor} pour cloner un dépot distant.%s$n${norm}"
 read y_n
 case "${y_n}" in
-git)
+dependancies)
+    cd "${path}" || exit
+    bash "$(find ~/ -name dependancies.sh)"
     bash "$(find ~/ -name git.sh)"
-    echo -n -e "${doubleNext}${insertColor}Configurer des dépendances ou finaliser le projet ? ${norm}${hugeIndicationColor}configure${norm} / ${hugeIndicationColor}finish${norm}$n"
-    read answer
-    if [ "${answer}" = "configure" ]; then
-        cd "${path}" || exit
-        bash "$(find ~/ -name dependancies.sh)"
-    elif [ "${answer}" = "finish" ]; then
-        process "${path%?}"
-        printf "${answerColor} Projet enregistré ! %s$n${norm}"
-        bash "$(find ~/ -name menu.sh)"
-    fi
+    createProject "${path%?}"
+    printf "${answerColor} Projet enregistré ! %s$n${norm}"
+    bash "$(find ~/ -name menu.sh)"
     ;;
 restart)
     bash "$(find ~/ -name new.sh)"
     ;;
 menu)
+    bash "$(find ~/ -name menu.sh)"
+    ;;
+finish)
+    createProject "${path%?}"
+    printf "${answerColor} Projet enregistré ! %s$n${norm}"
+    bash "$(find ~/ -name menu.sh)"
+    ;;
+gitClone)
+    bash "$(find ~/ -name gitClone.sh)"
+    createProject "${path%?}"
+    printf "${answerColor} Projet enregistré ! %s$n${norm}"
     bash "$(find ~/ -name menu.sh)"
     ;;
 esac
