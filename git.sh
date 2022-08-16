@@ -15,7 +15,7 @@ yes=y
 non=n
 path=$(pwd)
 echo "${path} / fichier git"
-date=$(date +%d-%m-%Y à %Hh%Mmin%Ssec)
+date=$(date +%d-%m-%Y_%Hh%Mmin%Ssec)
 pseudo=$(git config --global user.name)
 
 createGit() {

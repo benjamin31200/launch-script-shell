@@ -3,6 +3,7 @@ set -o posix
 insertColor='\033[1;33;4m'
 blueColor='\033[1;37;44m'
 redColor='\033[1;37;41m'
+arrayColor='\033[01;30m'
 answerColor='\033[01;35m'
 importantColor='\033[01;31m'
 indicationColor='\033[3;32m'
@@ -44,7 +45,7 @@ load_data() {
         ligne=$((rc / Colonnes))
         colonne=$((rc % Lignes))
         ((index = ligne * Lignes + colonne))
-        alpha[$index]=$(echo -e "${dependanciesName[$i]}▉▉")
+        alpha[$index]=$(echo -e "${dependanciesName[$i]}$arrayColor▉▉$norm")
         ((rc += 1))
     done
 }
@@ -67,7 +68,7 @@ affiche_data() {
         done
 
         ((ligne += 1))
-        echo "$n$simpleTab▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        echo -e "$n$simpleTab$arrayColor▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉$norm"
 
     done
 }
