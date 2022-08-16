@@ -77,5 +77,5 @@ if [ -e "${path}" ]; then
     bash "$(find ~/ -name menu.sh)"
 else
     printf "$answerColor Erreur dans le lancement %s$n$norm"
-    bash "$(find ~/ -name project.sh)"
+    bash "$(find ~/ -name menu.sh)"
 fi
