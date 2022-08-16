@@ -21,8 +21,8 @@ countLines=$(wc --lines <"$(find ~/ -name path.sh)")
 min=1
 
 for ((i = 1; i < countLines + 1; i++)); do
-    path=$(sed -n "${i}"p path.sh)
-    project=$(sed -n "${i}"p name.sh)
+    path=$(sed -n "${i}"p "$(find ~/ -name path.sh)")
+    project=$(sed -n "${i}"p "$(find ~/ -name name.sh)")
     declare -a projectArray=("${projectArray[@]}" "${project}")
     declare -a pathArray=("${pathArray[@]}" "${path}")
 done

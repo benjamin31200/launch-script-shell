@@ -19,38 +19,6 @@ date=$(date +%d-%m-%Y)
 pseudo=$(git config --global user.name)
 path=~/
 
-process() {
-    printf "${doubleNext}${insertColor} suiver les instructions: %s$n${norm}"
-    find ~/ -wholename "${1}"
-    printf "${doubleNext}${tab}${indicationColor} copier/coller le chemin d'accès du projet.%s$n${tab}${norm}"
-    printf "${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
-    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
-    cat >>"$(find ~/ -name path.sh)"
-    printf "${insertColor}Nommer votre projet: %s$n${norm}"
-    printf "${tab}${indicationColor} Appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
-    printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
-    cat >>"$(find ~/ -name name.sh)"
-}
-
-createProject() {
-    if [ -e "name.sh" ]; then
-        touch ~/bin/bash/name.sh
-        chmod +x "$(find ./ -name name.sh)"
-        process "$1"
-    else
-        process "$1"
-    fi
-}
-
-init() {
-    printf "${doubleNext}${tab}$answerColor Création du package.json en cours... %s$norm$n"
-    npm init
-    touch .gitignore
-    git add .
-    git commit -m "npm init"
-    git push origin master
-}
-
 addDir() {
     min=1
     printf "${insertColor}Rentrer le nom du dossier à chaque demande, s'il n'existe pas le créera automatiquement. %s$n${norm}"
@@ -78,17 +46,6 @@ addDir() {
             ((min += 1))
         fi
     done
-}
-
-createGit() {
-    gh auth login
-    echo -n -e "${insertColor}Nommer le repository ${norm}"
-    read name
-    echo -n -e "${insertColor}dépôt privé ou public ? private/public ${norm}"
-    read visibility
-    echo "# dépôt créer le ${date}" >>README.md
-    gh repo create "${name}" --description "Repo créer le ${date}" --push --source="${path%?}" --"${visibility}"
-    printf "${answerColor} Lien du projet:${norm} https://github.com/${pseudo}/${name} %s"
 }
 
 createGitClone() {
@@ -124,12 +81,6 @@ case "${y_n}" in
 dependancies)
     cd "${path}" || exit
     bash "$(find ~/ -name dependancies.sh)"
-    git init
-    git add .
-    git commit -m "initialisation du projet"
-    isGH createGit
-    init
-    createProject "${path%?}"
     printf "${answerColor} Projet enregistré ! %s$n${norm}"
     bash "$(find ~/ -name menu.sh)"
     ;;

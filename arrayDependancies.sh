@@ -15,10 +15,12 @@ doubleNext=$'\n\n'
 tab=$'\t\t'
 yes=y
 non=n
+path=$(pwd)
 
 Lignes=5
 Colonnes=5
 min=1
+
 declare -a dependanciesName=([0]=react [1]=express [2]=eslint [3]=prettier [4]=styled-components [5]=react-router-dom [6]=nodemon [7]=dotenv [8]=express-promise-router [9]=mysql [10]=mysql2 [11]=joi
     [12]=argon2 [13]=sequelize [14]=json-webtoken [15]=jwt-decode [16]=express-session [17]=sweetalert2 [18]=cookie [19]=sweetalert2-react [20]=nestJS [21]=multer [22]=mongoose [23]=axios)
 
@@ -38,11 +40,11 @@ load_data() {
     local ligne
     local colonne
     for i in "${!dependanciesName[@]}"; do
-        ligne=$(( rc / Colonnes ))
-        colonne=$(( rc % Lignes ))
-        (( index = ligne * Lignes + colonne ))
+        ligne=$((rc / Colonnes))
+        colonne=$((rc % Lignes))
+        ((index = ligne * Lignes + colonne))
         alpha[$index]=$(echo -e "${dependanciesName[$i]}")
-        (( rc += 1 ))
+        ((rc += 1))
     done
 }
 
@@ -58,12 +60,12 @@ affiche_data() {
         echo -n "          ● "
 
         while [ "$colonne" -lt "$Colonnes" ]; do
-            (( index = ligne * Lignes + colonne ))
+            ((index = ligne * Lignes + colonne))
             echo -n "${alpha[index]} "
-            (( colonne += 1 ))
+            ((colonne += 1))
         done
 
-        (( ligne += 1 ))
+        ((ligne += 1))
         echo
 
     done
@@ -90,6 +92,8 @@ for ((e = 0; e < min; e++)); do
                 if [ "${answer}" == "react" ]; then
                     echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react: $norm$n"
                     read name
+                    path="$(pwd)"/"${name}"
+                    cd "${path}" || exit
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]} ${name}")
                 elif [ "${answer}" != "react" ]; then
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]}")
@@ -105,6 +109,11 @@ nb_elementSelect=${#selectDependancies[*]}
 for ((i = 0; i < nb_elementSelect; i++)); do
     ${selectDependancies[i]}
 done
-npm install
+cd "${path}" || exit
+git init
+git add .
+git commit -m "création du projet ${answer}"
+bash "$(find ~/ -name git.sh)"
+bash "$(find ~/ -name finishProject.sh)"
 
 exit 0

@@ -13,6 +13,7 @@ doubleNext=$'\n\n'
 tab=$'\t\t'
 yes=y
 non=n
+path=$(pwd)
 
 declare -a dependanciesLink=([0]="npx create-react-app" [1]="npm install express --save" [2]="npm install eslint --save-dev" [3]="npm install --save-dev prettier"
     [4]="npm install --save styled-components" [5]="npm i react-router-dom"
@@ -29,14 +30,16 @@ preconfigure() {
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
-        npm install
+        path="$(pwd)"/"${name}"
+        cd "${path}" || exit
         ;;
     nest)
         ${dependanciesLink[20]}
-        nest new
-        npm install
-        git add all
-        git commit -m "add nest"
+        echo -n -e "$insertColor Nom du dossier Nest: $norm"
+        read name
+        nest new "${name}"
+        path="$(pwd)"/"${name}"
+        cd "${path}" || exit
         ;;
     express)
         ${dependanciesLink[1]}
@@ -47,13 +50,16 @@ preconfigure() {
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
-        npm install
+        path="$(pwd)"/"${name}"
+        cd "${path}" || exit
         ;;
     reactNest)
         ${dependanciesLink[20]}
-        nest new
-        git add all
-        git commit -m "add nest"
+        echo -n -e "$insertColor Nom du dossier Nest: $norm"
+        read name
+        nest new "${name}"
+        path="$(pwd)"/"${name}"
+        cd "${path}" || exit
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
@@ -64,7 +70,6 @@ preconfigure() {
         ;;
     esac
 }
-
 echo -n -e "${insertColor}Choisir un projet préconfigurer ou faire sa propre configuration ? : full/empty $n${norm}"
 read answer
 if [ "${answer}" = "full" ]; then
@@ -78,7 +83,14 @@ if [ "${answer}" = "full" ]; then
     printf "$tab$indicationColor Pour quitter le menu, taper: $norm${hugeIndicationColor}exit%s$norm$n"
     read answer
     preconfigure "${answer}"
+    cd "${path}" || exit
+    git init
+    git add .
+    git commit -m "création du projet ${answer}"
+    bash "$(find ~/ -name git.sh)"
+    bash "$(find ~/ -name finishProject.sh)"
 elif [ "${answer}" = "empty" ]; then
+    cd "${path}" || exit
     bash "$(find ~/ -name arrayDependancies.sh)"
 fi
 exit 0
