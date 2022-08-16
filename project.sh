@@ -39,7 +39,7 @@ load_data() {
         ligne=$((rc / Colonnes))
         colonne=1
         ((index = i))
-        alpha[$index]=$(echo -e "$indicationColor2 ${projectArray[$i]}$norm ✒ $indicationItalic ${pathArray[$i]} $norm")
+        alpha[$index]=$(echo -e "$indicationColor2 ➩ ${projectArray[$i]}$norm ✒ $indicationItalic ${pathArray[$i]} $norm")
         ((rc += 1))
     done
 }
@@ -53,7 +53,7 @@ affiche_data() {
     while [ "$ligne" -lt "$Lignes" ]; do
         local colonne=0
 
-        echo -e -n "          $indicationColor2$ligne ➪$norm "
+        echo -e -n "          $indicationColor2$ligne$norm "
 
         while [ "$colonne" -lt "$Colonnes" ]; do
             ((index = ligne))

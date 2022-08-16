@@ -45,7 +45,7 @@ load_data() {
         ligne=$((rc / Colonnes))
         colonne=$((rc % Lignes))
         ((index = ligne * Lignes + colonne))
-        alpha[$index]=$(echo -e "${dependanciesName[$i]}$arrayColor▉▉$norm")
+        alpha[$index]=$(echo -e "${dependanciesName[$i]}✺✺")
         ((rc += 1))
     done
 }
@@ -68,7 +68,7 @@ affiche_data() {
         done
 
         ((ligne += 1))
-        echo -e "$n$simpleTab$arrayColor▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉$norm"
+        echo -e "$n$simpleTab✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺"
 
     done
 }
