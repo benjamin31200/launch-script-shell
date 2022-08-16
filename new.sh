@@ -46,7 +46,7 @@ init() {
     printf "${doubleNext}${tab}$answerColor Création du package.json en cours... %s$norm$n"
     npm init
     touch .gitignore
-    git add .
+    git add all
     git commit -m "npm init"
     git push origin master
 }

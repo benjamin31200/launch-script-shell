@@ -20,7 +20,7 @@ declare -a dependanciesLink=([0]="npx create-react-app" [1]="npm install express
     [9]="npm install mysql" [10]="npm install --save mysql2" [11]="npm i joi"
     [12]="npm i argon2" [13]="npm install --save sequelize" [14]="npm install jsonwebtoken" [15]="npm i jwt-decode" [16]="npm i express-session"
     [17]="npm install sweetalert2" [18]="npm install cookie-parser" [19]="npm install --save sweetalert2-react-content"
-    [20]="npm i -g @nestjs/cli ; nest new" [21]="npm install --save multer" [22]="npm install mongoose --save" [23]="npm install axios"
+    [20]="npm i -g @nestjs/cli" [21]="npm install --save multer" [22]="npm install mongoose --save" [23]="npm install axios"
 )
 
 preconfigure() {
@@ -33,7 +33,10 @@ preconfigure() {
         ;;
     nest)
         ${dependanciesLink[20]}
+        nest new
         npm install
+        git add all
+        git commit -m "add nest"
         ;;
     express)
         ${dependanciesLink[1]}
@@ -48,6 +51,9 @@ preconfigure() {
         ;;
     reactNest)
         ${dependanciesLink[20]}
+        nest new
+        git add all
+        git commit -m "add nest"
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
