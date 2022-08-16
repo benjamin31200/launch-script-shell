@@ -15,7 +15,7 @@ yes=y
 non=n
 
     echo -n -e "$insertColor Suivre les consignes: $norm"
-    printf "$doubleNext$tab$indicationColor Choisir l'une des options en tapant le mot en surlignement: %s$n$norm"
+    printf "$doubleNext$tab$indicationColor Choisir l'une des options en tapant le mot surligné: %s$n$norm"
     printf "$tab$indicationColor Pour paramétrer un projet existant, taper: $norm${hugeIndicationColor}old%s$norm$n"
     printf "$tab$indicationColor Pour paramétrer un nouveau projet, taper: $norm${hugeIndicationColor}new%s$norm$n"
     printf "$tab$indicationColor Pour lancer un projet spécifique, taper: $norm${hugeIndicationColor}project%s$norm$n"
@@ -30,10 +30,10 @@ non=n
         bash "$(find ~/ -name new.sh)"
         ;;
     project)
-        echo "en construction"
+        bash "$(find ~/ -name project.sh)"
         ;;
     main)
-        echo "en construction"
+        bash "$(find ~/ -name main.sh)"
         ;;
     exit)
         exit 0

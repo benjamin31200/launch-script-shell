@@ -46,7 +46,7 @@ init() {
     printf "${doubleNext}${tab}$answerColor Création du package.json en cours... %s$norm$n"
     npm init
     touch .gitignore
-    git add all
+    git add .
     git commit -m "npm init"
     git push origin master
 }
@@ -115,7 +115,7 @@ addDir
 cd "${path}" || exit
 printf "${insertColor}Processus d'enregistrement dans le répertoire${norm}${exampleColor}$(pwd)%s$n${norm}"
 echo -n -e "${insertColor}Suivre les consignes: ${norm}"
-printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances. %s$n${norm}"
+printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances et créer votre dépot git distant. %s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer.%s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}menu${norm}${indicationColor} pour retourner au menu principal.%s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}gitClone${norm}${indicationColor} pour cloner un dépot distant.%s$n${norm}"
@@ -145,6 +145,9 @@ gitClone)
     createProject "${path%?}"
     printf "${answerColor} Projet enregistré ! %s$n${norm}"
     bash "$(find ~/ -name menu.sh)"
+    ;;
+*)
+    bash "$(find ~/ -name new.sh)"
     ;;
 esac
 exit 0

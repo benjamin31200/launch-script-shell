@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o posix
 insertColor='\033[1;33;4m'
-greenColor='\033[1;37;42m'
+blueColor='\033[1;37;44m'
 redColor='\033[1;37;41m'
 answerColor='\033[01;35m'
 importantColor='\033[01;31m'
@@ -19,7 +19,6 @@ non=n
 Lignes=5
 Colonnes=5
 min=1
-
 declare -a dependanciesName=([0]=react [1]=express [2]=eslint [3]=prettier [4]=styled-components [5]=react-router-dom [6]=nodemon [7]=dotenv [8]=express-promise-router [9]=mysql [10]=mysql2 [11]=joi
     [12]=argon2 [13]=sequelize [14]=json-webtoken [15]=jwt-decode [16]=express-session [17]=sweetalert2 [18]=cookie [19]=sweetalert2-react [20]=nestJS [21]=multer [22]=mongoose [23]=axios)
 
@@ -36,12 +35,14 @@ dependanciesName=("${dependanciesName[@]:nb_element}")
 load_data() {
     local rc=0
     local index
+    local ligne
+    local colonne
     for i in "${!dependanciesName[@]}"; do
-        local ligne=$(expr $rc / $Colonnes)
-        local colonne=$(expr $rc % $Lignes)
-        let "index = $ligne * $Lignes + $colonne"
+        ligne=$(( rc / Colonnes ))
+        colonne=$(( rc % Lignes ))
+        (( index = ligne * Lignes + colonne ))
         alpha[$index]=$(echo -e "${dependanciesName[$i]}")
-        let "rc += 1"
+        (( rc += 1 ))
     done
 }
 
@@ -57,12 +58,12 @@ affiche_data() {
         echo -n "          ● "
 
         while [ "$colonne" -lt "$Colonnes" ]; do
-            let "index = $ligne * $Lignes + $colonne"
+            (( index = ligne * Lignes + colonne ))
             echo -n "${alpha[index]} "
-            let "colonne += 1"
+            (( colonne += 1 ))
         done
 
-        let "ligne += 1"
+        (( ligne += 1 ))
         echo
 
     done
@@ -85,7 +86,7 @@ for ((e = 0; e < min; e++)); do
     if [ "${answer}" != "end" ]; then
         for ((i = 0; i < nb_element; i++)); do
             if [ "${dependanciesName[i]}" = "$redColor✘ $answer$norm" ]; then
-                dependanciesName=("${dependanciesName[@]//"$redColor✘ ${answer}$norm"/"$greenColor✔ ${answer}$norm"}")
+                dependanciesName=("${dependanciesName[@]//"$redColor✘ ${answer}$norm"/"$blueColor✔ ${answer}$norm"}")
                 if [ "${answer}" == "react" ]; then
                     echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react: $norm$n"
                     read name
