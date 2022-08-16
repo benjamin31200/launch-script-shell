@@ -14,11 +14,6 @@ tab=$'\t\t'
 yes=y
 non=n
 
-declare -a dependanciesName=([0]=react [1]=express [2]=eslint [3]=prettier [4]=styled-components [5]=react-router-dom
-    [6]=nodemon [7]=dotenv [8]=express-promise-router [9]=mysql [10]=mysql2 [11]=joi
-    [12]=argon2 [13]=sequelize [14]=json-webtoken [15]=jwt-decode [16]=express-session [17]=sweetalert2 [18]=cookie-parser [19]=sweetalert2-react-content
-    [20]=nestJS [21]=multer [22]=mongoose [23]=axios)
-
 declare -a dependanciesLink=([0]="npx create-react-app" [1]="npm install express --save" [2]="npm install eslint --save-dev" [3]="npm install --save-dev prettier"
     [4]="npm install --save styled-components" [5]="npm i react-router-dom"
     [6]="npm install --save-dev nodemon" [7]="npm install dotenv --save" [8]="npm install express-promise-router --save"
@@ -28,42 +23,35 @@ declare -a dependanciesLink=([0]="npx create-react-app" [1]="npm install express
     [20]="npm i -g @nestjs/cli ; nest new" [21]="npm install --save multer" [22]="npm install mongoose --save" [23]="npm install axios"
 )
 
-init() {
-    printf "$insertColor Copier/coller le lien https du repo github trouvable au-dessus %s$norm$n"
-    printf "$insertColor Quand demandé, à mettre dans: $norm$importantColor git repository %s$norm$n"
-    printf "$answerColor Création du package.json en cours... %s$norm$n"
-    npm init
-}
-
 preconfigure() {
     case "$1" in
     react)
-        init
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
+        npm install
         ;;
     nest)
-        init
         ${dependanciesLink[20]}
+        npm install
         ;;
     express)
-        init
         ${dependanciesLink[1]}
+        npm install
         ;;
     reactExpress)
-        init
         ${dependanciesLink[1]}
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
+        npm install
         ;;
     reactNest)
-        init
         ${dependanciesLink[20]}
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
+        npm install
         ;;
     *)
         exit 0

@@ -20,7 +20,7 @@ non=n
     printf "$tab$indicationColor Pour paramétrer un nouveau projet, taper: $norm${hugeIndicationColor}new%s$norm$n"
     printf "$tab$indicationColor Pour lancer un projet spécifique, taper: $norm${hugeIndicationColor}project%s$norm$n"
     printf "$tab$indicationColor Pour changer de projet principal, taper: $norm${hugeIndicationColor}main%s$norm$n"
-    printf "$tab$indicationColor Pour quitter le menu, taper: $norm${hugeIndicationColor}exit%s$norm$n"
+    printf "$tab$indicationColor Pour quitter le script, taper: $norm${hugeIndicationColor}exit%s$norm$n"
     read y_n
     case "$y_n" in
     old)
@@ -36,8 +36,7 @@ non=n
         echo "en construction"
         ;;
     exit)
-        printf "$answerColor Sortie du menu. %s$n$norm"
-        bash "$(find ~/ -name start.sh)"
+        exit 0
         ;;
     *)
         exit 0
