@@ -53,7 +53,7 @@ affiche_data() {
     while [ "$ligne" -lt "$Lignes" ]; do
         local colonne=0
 
-        echo -e -n "          $indicationColor2$ligne ▶$norm "
+        echo -e -n "          $indicationColor2$ligne ➪$norm "
 
         while [ "$colonne" -lt "$Colonnes" ]; do
             ((index = ligne))

@@ -43,15 +43,12 @@ preconfigure() {
         ;;
     express)
         ${dependanciesLink[1]}
-        npm install
         ;;
     reactExpress)
         ${dependanciesLink[1]}
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
-        path="$(pwd)"/"${name}"
-        cd "${path}" || exit
         ;;
     reactNest)
         ${dependanciesLink[20]}
@@ -63,7 +60,6 @@ preconfigure() {
         echo -n -e "$insertColor Nom du dossier React: $norm"
         read name
         ${dependanciesLink[0]} "${name}"
-        npm install
         ;;
     *)
         exit 0

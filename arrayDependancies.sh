@@ -13,6 +13,7 @@ norm='\033[0m'
 n=$'\n'
 doubleNext=$'\n\n'
 tab=$'\t\t'
+simpleTab=$'\t'
 yes=y
 non=n
 path=$(pwd)
@@ -29,7 +30,7 @@ declare -a selectDependancies
 nb_element=${#dependanciesName[*]}
 
 for ((i = 0; i < nb_element; i++)); do
-    dependanciesName=("${dependanciesName[@]}" "$redColor✘ ${dependanciesName[$i]}$norm")
+    dependanciesName=("${dependanciesName[@]}" "$redColor✘ ${dependanciesName[$i]} $norm")
 done
 
 dependanciesName=("${dependanciesName[@]:nb_element}")
@@ -43,7 +44,7 @@ load_data() {
         ligne=$((rc / Colonnes))
         colonne=$((rc % Lignes))
         ((index = ligne * Lignes + colonne))
-        alpha[$index]=$(echo -e "${dependanciesName[$i]}")
+        alpha[$index]=$(echo -e "${dependanciesName[$i]}▉▉")
         ((rc += 1))
     done
 }
@@ -57,16 +58,16 @@ affiche_data() {
     while [ "$ligne" -lt "$Lignes" ]; do
         local colonne=0
 
-        echo -n "          ● "
+        echo -n "       ● "
 
         while [ "$colonne" -lt "$Colonnes" ]; do
             ((index = ligne * Lignes + colonne))
-            echo -n "${alpha[index]} "
+            echo -n "${alpha[index]}"
             ((colonne += 1))
         done
 
         ((ligne += 1))
-        echo
+        echo "$n$simpleTab▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
 
     done
 }
@@ -87,13 +88,12 @@ for ((e = 0; e < min; e++)); do
     read answer
     if [ "${answer}" != "end" ]; then
         for ((i = 0; i < nb_element; i++)); do
-            if [ "${dependanciesName[i]}" = "$redColor✘ $answer$norm" ]; then
-                dependanciesName=("${dependanciesName[@]//"$redColor✘ ${answer}$norm"/"$blueColor✔ ${answer}$norm"}")
+            if [ "${dependanciesName[i]}" = "$redColor✘ $answer $norm" ]; then
+                dependanciesName=("${dependanciesName[@]//"$redColor✘ ${answer} $norm"/"$blueColor✔ ${answer} $norm"}")
                 if [ "${answer}" == "react" ]; then
                     echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react: $norm$n"
                     read name
                     path="$(pwd)"/"${name}"
-                    cd "${path}" || exit
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]} ${name}")
                 elif [ "${answer}" != "react" ]; then
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]}")
@@ -105,6 +105,8 @@ for ((e = 0; e < min; e++)); do
         done
     fi
 done
+echo "${!selectDependancies[0]}" 
+exit 0
 nb_elementSelect=${#selectDependancies[*]}
 for ((i = 0; i < nb_elementSelect; i++)); do
     ${selectDependancies[i]}
