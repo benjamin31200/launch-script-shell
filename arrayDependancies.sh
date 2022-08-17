@@ -3,20 +3,11 @@ set -o posix
 insertColor='\033[1;33;4m'
 blueColor='\033[1;37;44m'
 redColor='\033[1;37;41m'
-arrayColor='\033[01;30m'
-answerColor='\033[01;35m'
-importantColor='\033[01;31m'
-indicationColor='\033[3;32m'
 hugeIndicationColor='\033[5;37;41m'
-successColor='\033[01;32m'
-exampleColor='\033[01;34m'
 norm='\033[0m'
 n=$'\n'
 doubleNext=$'\n\n'
-tab=$'\t\t'
 simpleTab=$'\t'
-yes=y
-non=n
 path=$(pwd)
 
 Lignes=5

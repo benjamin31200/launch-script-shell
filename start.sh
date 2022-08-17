@@ -2,14 +2,10 @@
 set -o posix
 insertColor='\033[1;33;4m'
 answerColor='\033[01;35m'
-indicationColor='\033[3;32m'
-hugeIndicationColor='\033[5;37;41m'
 norm='\033[0m'
 yes=y
 non=n
 n='\n'
-doubleNext='\n\n'
-tab='\t\t'
 
 start() {
 	echo -n -e "$insertColor Lancer le projet principal ? y/n $norm"
