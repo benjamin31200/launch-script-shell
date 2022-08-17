@@ -16,12 +16,12 @@ function find_gitignore {
     echo -n -e "${insertColor} Suiver les instructions: ${doubleNext}${tab}${norm}"
     printf "${indicationColor} Taper: ${norm}${hugeIndicationColor}git${norm}${indicationColor} Pour trouver tous vos projets contenant un .gitignore.%s$n${tab}${norm}"
     printf "${indicationColor} Taper: ${norm}${hugeIndicationColor}least${norm}${indicationColor} Pour trouver tous vos projets récemment créer (7j max et +20ko).%s$n${norm}"
-    read help
-    if [ "$help" = "git" ]; then
+    read answer
+    if [ "$answer" = "git" ]; then
         printf "${answerColor} Tous les dossiers contenant un .gitinore: %s$n${norm}"
         dirname "$(find ~/ -type f -name "*.gitignore" -exec ls -d {} +) | less"
         search_dir
-    elif [ "$help" = "least" ]; then
+    elif [ "$answer" = "least" ]; then
         printf "${answerColor} Tous les projets récents et pesant au moins 20ko: %s$n${norm}"
         dirname "$(find ~/ -type d -ctime +5 -size +20k -exec ls -d {} + | less)"
         search_dir
@@ -32,11 +32,11 @@ function find_gitignore {
 
 function error {
     printf "${answerColor} Le fichier/dossier n'existe pas, du moins pas depuis la racine.%s$n${norm}"
-    echo -n -e "${insertColor} Voulez-vous recommencer ? y/n : ${norm}"
-    read y_n
-    if [ "$y_n" = "$yes" ]; then
+    echo -n -e "${insertColor} Recommencer ? $norm${hugeIndicationColor}oui$norm / ${hugeIndicationColor}non${norm}"
+    read answer
+    if [ "$answer" = "$yes" ]; then
         search_dir
-    elif [ "$y_n" = "$non" ]; then
+    elif [ "$answer" = "$non" ]; then
         echo "Sortie des configurations..."
         bash "$(find ./ -name start.sh)"
     fi
@@ -49,7 +49,7 @@ function process {
     printf "${indicationColor} puis appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
     printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
     cat >>"$(find ./ -name path.sh)"
-    printf "$n${insertColor}Nommer votre projet: %s$n${norm}"
+    printf "$n${insertColor}Nommer le projet: %s$n${norm}"
     printf "$tab${indicationColor} Appuyer sur ${norm}${hugeIndicationColor}entrée%s${norm}$n"
     printf "${tab}${indicationColor} enfin, appuyer sur ${norm}${hugeIndicationColor}CTRL+D%s${norm}$n"
     cat >>"$(find ~/ -name name.sh)"
@@ -65,13 +65,13 @@ function search_dir {
         find_gitignore
     elif [ ${#checkSrc[0]} -gt 0 ]; then
         printf "${answerColor} Processus d'enregistrement du nouveau projet: %s$n${norm}"
-        if [ -e "path.sh" ]; then
-            touch ~/bin/bash/path.sh
-            chmod +x "$(find ./ -name path.sh)"
-            process "${newSrc}"
-        else
-            process "${newSrc}"
-        fi
+        if [ -e "name.sh" ] && [ -e "path.sh" ]; then
+        touch ~/bin/bash/name.sh
+        touch ~/bin/bash/path.sh
+        process "$newSrc"
+    else
+        process "$newSrc"
+    fi
         printf "${answerColor} Enregistrement du projet réussi !%s$n${norm}"
         bash "$(find ./ -name menu.sh)"
         exit 0

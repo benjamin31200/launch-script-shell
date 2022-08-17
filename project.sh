@@ -5,6 +5,7 @@ answerColor='\033[01;35m'
 indicationColor='\033[3;32m'
 indicationColor2='\033[1;32m'
 indicationItalic='\033[3;37m'
+hugeIndicationColor='\033[5;37;41m'
 norm='\033[0m'
 n='\n'
 doubleNext=$'\n\n'
@@ -19,7 +20,6 @@ done
 Lignes=$countLines
 Colonnes=1
 
-printf "$doubleNext$indicationColor Aperçu des projets configurés: %s$n$norm"
 load_data() {
     local rc=0
     local index
@@ -56,16 +56,38 @@ affiche_data() {
 
     done
 }
-load_data
-affiche_data
-
-echo -n -e "$n$insertColor Copier le chemin du projet à lancer $norm"
-read path
-if [ -e "${path}" ]; then
-    code "${path}"
-    printf "$answerColor Lancement du projet... %s$n$norm"
-    bash "$(find ~/ -name menu.sh)"
-else
-    printf "$answerColor Erreur dans le lancement %s$n$norm"
+echo -n -e "$n$insertColor Lancer ou supprimer un projet:  $norm${hugeIndicationColor}lancer$norm / ${hugeIndicationColor}supprimer$norm : "
+read answer
+if [ "${answer}" = "lancer" ]; then
+    printf "$doubleNext$indicationColor Aperçu des projets configurés: %s$n$norm"
+    load_data
+    affiche_data
+    echo -n -e "$n$insertColor Copier le chemin du projet à lancer $norm"
+    read path
+    if [ -e "${path}" ]; then
+        code "${path}"
+        printf "$answerColor Lancement du projet... %s$n$norm"
+        bash "$(find ~/ -name menu.sh)"
+    else
+        printf "$answerColor Erreur dans le lancement %s$n$norm"
+        bash "$(find ~/ -name menu.sh)"
+    fi
+elif [ "${answer}" = "supprimer" ]; then
+    printf "$doubleNext$indicationColor Aperçu des projets configurés: %s$n$norm"
+    load_data
+    affiche_data
+    echo -n -e "$n$insertColor Copier le chemin du projet à supprimer $norm"
+    read -r path
+    lines=$(grep "${path}" "$(find ~/ -name path.sh)" -n)
+    number=$(echo "${lines}" | cut -d ":" -f 1)
+    sed -i "$number"d "$(find ~/ -name path.sh)"
+    sed -i "$number"d "$(find ~/ -name name.sh)"
+    dir=$(basename "${path}")
+    cd "${path}" || exit
+    cd ..
+    rm -rf "${dir}"
+    printf "$answerColor projet supprimé %s$n$norm"
     bash "$(find ~/ -name menu.sh)"
 fi
+
+exit 0

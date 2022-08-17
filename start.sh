@@ -2,18 +2,17 @@
 set -o posix
 insertColor='\033[1;33;4m'
 answerColor='\033[01;35m'
+hugeIndicationColor='\033[5;37;41m'
 norm='\033[0m'
-yes=y
-non=n
 n='\n'
 
 start() {
-	echo -n -e "$insertColor Lancer le projet principal ? y/n $norm"
-	read y_n
-	if [ "$y_n" = "$yes" ]; then
+	echo -n -e "$insertColor Lancer le projet principal: $norm${hugeIndicationColor}oui$norm / ${hugeIndicationColor}non$norm : "
+	read answer
+	if [ "$answer" = "oui" ]; then
 		printf "$answerColor Lancement du projet ! %s$n$norm"
 		code "$(cat "$(find ./ -name mainProject.sh)")"
-	elif [ "$y_n" = "$non" ]; then
+	elif [ "$answer" = "non" ]; then
 		bash "$(find ~/ -name menu.sh)"
 	else
 		start

@@ -14,6 +14,9 @@ Lignes=5
 Colonnes=5
 min=1
 
+declare -a baseName=([0]=react [1]=express [2]=eslint [3]=prettier [4]=styled-components [5]=react-router-dom [6]=nodemon [7]=dotenv [8]=express-promise-router [9]=mysql [10]=mysql2 [11]=joi
+    [12]=argon2 [13]=sequelize [14]=json-webtoken [15]=jwt-decode [16]=express-session [17]=sweetalert2 [18]=cookie [19]=sweetalert2-react [20]=nestJS [21]=multer [22]=mongoose [23]=axios)
+
 declare -a dependanciesName=([0]=react [1]=express [2]=eslint [3]=prettier [4]=styled-components [5]=react-router-dom [6]=nodemon [7]=dotenv [8]=express-promise-router [9]=mysql [10]=mysql2 [11]=joi
     [12]=argon2 [13]=sequelize [14]=json-webtoken [15]=jwt-decode [16]=express-session [17]=sweetalert2 [18]=cookie [19]=sweetalert2-react [20]=nestJS [21]=multer [22]=mongoose [23]=axios)
 
@@ -83,11 +86,13 @@ for ((e = 0; e < min; e++)); do
             if [ "${dependanciesName[i]}" = "$redColor✘ $answer $norm" ]; then
                 dependanciesName=("${dependanciesName[@]//"$redColor✘ ${answer} $norm"/"$blueColor✔ ${answer} $norm"}")
                 if [ "${answer}" == "react" ]; then
-                    echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react: $norm$n"
+                    echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react:$norm "
                     read name
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]} ${name}")
                 elif [ "${answer}" != "react" ]; then
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]}")
+                elif [ "${baseName[i]}" != "$answer" ]; then
+                    ((min += 1))
                 fi
                 load_data
                 affiche_data
@@ -96,6 +101,7 @@ for ((e = 0; e < min; e++)); do
         done
     fi
 done
+
 nb_elementSelect=${#selectDependancies[*]}
 for ((i = 0; i < nb_elementSelect; i++)); do
     if [ "${selectDependancies[i]}" != "${dependanciesLink[0]} ${name}" ]; then

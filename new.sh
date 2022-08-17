@@ -21,7 +21,7 @@ addDir() {
     printf "${indicationColor}Taper ${norm}${hugeIndicationColor}exit${norm}${indicationColor} pour confirmer le chemin et passer à la suite.%s$n${norm}"
     printf "${indicationColor}Taper ${norm}${hugeIndicationColor}liste${norm}${indicationColor} pour inspecter le répertoire courant.%s$doubleNext${norm}"
     for ((i = 0; i < min; i++)); do
-        echo -n -e "${insertColor}Nom du dossier: ${norm}"
+        echo -n -e "${insertColor}Nom du dossier: ${norm}$n"
         read dir
         if [ "${dir}" != "exit" ] && [ "${dir}" != "liste" ]; then
             path+="${dir}"/
@@ -68,12 +68,12 @@ addDir
 cd "${path}" || exit
 printf "${insertColor}Processus d'enregistrement dans le répertoire${norm}${exampleColor}$(pwd)%s$n${norm}"
 echo -n -e "${insertColor}Suivre les consignes: ${norm}"
-printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances et créer votre dépot git distant. %s$n${norm}"
+printf "${doubleNext}${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}dependancies${norm}${indicationColor} pour installer des dépendances et créer le dépot git. %s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}restart${norm}${indicationColor} pour recommencer.%s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}menu${norm}${indicationColor} pour retourner au menu principal.%s$n${norm}"
 printf "${tab}${indicationColor}Taper ${norm}${hugeIndicationColor}gitClone${norm}${indicationColor} pour cloner un dépot distant.%s$n${norm}"
-read y_n
-case "${y_n}" in
+read answer
+case "${answer}" in
 dependancies)
     cd "${path}" || exit
     bash "$(find ~/ -name dependancies.sh)"

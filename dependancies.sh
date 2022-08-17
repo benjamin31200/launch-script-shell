@@ -47,20 +47,19 @@ preconfigure() {
     reactNest)
         ${dependanciesLink[20]}
         echo -n -e "$insertColor Nom du dossier Nest: $norm"
-        read name
-        nest new "${name}"
-        path="$(pwd)"/"${name}"
-        cd "${path}" || exit
+        read nameNest
+        nest new "${nameNest}"
         echo -n -e "$insertColor Nom du dossier React: $norm"
-        read name
-        ${dependanciesLink[0]} "${name}"
+        read nameReact
+        ${dependanciesLink[0]} "${nameReact}"
+        cd "${path}" || exit
         ;;
     *)
         exit 0
         ;;
     esac
 }
-echo -n -e "${insertColor}Choisir un projet préconfigurer ou faire sa propre configuration ? : full/empty $n${norm}"
+echo -n -e "${insertColor}Choisir un projet préconfigurer ou faire sa propre configuration: $norm${hugeIndicationColor}full$norm / ${hugeIndicationColor}empty${norm}$n"
 read answer
 if [ "${answer}" = "full" ]; then
     echo -n -e "$insertColor Suivre les consignes: $norm"

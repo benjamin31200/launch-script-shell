@@ -2,20 +2,20 @@
 set -o posix
 insertColor='\033[1;33;4m'
 answerColor='\033[01;35m'
+hugeIndicationColor='\033[5;37;41m'
 norm='\033[0m'
-n=$'\n'
 doubleNext=$'\n\n'
 tab=$'\t\t'
 path=$(pwd)
 echo "${path} / fichier git"
-date=$(date +%d-%m-%Y_%Hh%Mmin%Ssec)
+date=$(date +%d-%m-%Y_%Hh%M)
 pseudo=$(git config --global user.name)
 
 createGit() {
     gh auth login
     echo -n -e "${insertColor}Nommer le repository ${norm}"
     read name
-    echo -n -e "${insertColor}dépôt privé ou public ? private/public ${norm}"
+    echo -n -e "${insertColor}dépôt privé ou public ? $norm${hugeIndicationColor}private$norm / ${hugeIndicationColor}public${norm} : "
     read visibility
     echo "# dépôt créer le ${date}" >>README.md
     gh repo create "${name}" --description "Repo créer le ${date}" --push --source="${path}" --"${visibility}"
@@ -23,7 +23,7 @@ createGit() {
 }
 
 init() {
-    printf "${doubleNext}${tab}$answerColor Création du package.json en cours... %s$norm$n"
+    printf "${doubleNext}${tab}$answerColor Création du package.json en cours... %s$norm$doubleNext"
     npm init
     touch .gitignore
     git add .

@@ -8,7 +8,6 @@ n=$'\n'
 doubleNext=$'\n\n'
 tab=$'\t\t'
 path=$(pwd)
-echo "${path} / fichier finish"
 
 process() {
     printf "${doubleNext}${insertColor} suiver les instructions: %s$n${norm}"
@@ -24,11 +23,12 @@ process() {
 }
 
 createProject() {
-    if [ -e "name.sh" ]; then
-        touch ~/bin/bash/name.sh
-        chmod +x "$(find ./ -name name.sh)"
+    if [ -e "name.sh" ] && [ -e "path.sh" ]; then
         process "$1"
     else
+        touch ~/bin/bash/name.sh
+        touch ~/bin/bash/path.sh
+        chmod +x name.sh ; chmod +x path.sh
         process "$1"
     fi
 }
