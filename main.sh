@@ -64,10 +64,6 @@ affiche_data
 printf "$n$insertColor Copier le chemin du projet à passer en principal%s$norm"
 printf "$n$tab$answerColor Appuyer sur $norm${hugeIndicationColor}entrée%s$norm"
 printf "$n$tab$answerColor Appuyer sur $norm${hugeIndicationColor}CTRL+D%s$norm$n"
-if [ -d "$(cat >"$(find ~/ -name mainProject.sh)")" ]; then
-    printf "$answerColor Changement réussi %s$n$norm"
-    bash "$(find ~/ -name menu.sh)"
-else
-    printf "$answerColor Erreur dans la sauvegarde %s$n$norm"
-    bash "$(find ~/ -name main.sh)"
-fi
+cat >"$(find ~/ -name mainProject.sh)"
+printf "$answerColor Changement réussi %s$n$norm"
+bash "$(find ~/ -name menu.sh)"

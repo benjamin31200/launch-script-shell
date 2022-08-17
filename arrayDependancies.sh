@@ -3,6 +3,7 @@ set -o posix
 insertColor='\033[1;33;4m'
 blueColor='\033[1;37;44m'
 redColor='\033[1;37;41m'
+answerColor='\033[01;35m'
 hugeIndicationColor='\033[5;37;41m'
 norm='\033[0m'
 n=$'\n'
@@ -106,7 +107,8 @@ for ((e = 0; e < min; e++)); do
         done
     fi
 done
-echo "${selectDependancies[@]}"
+printf "$answerColor liste des liens d'installation: %s$n$norm"
+printf "$answerColor ${selectDependancies[*]} %s$n$norm"
 nb_elementSelect=${#selectDependancies[*]}
 for ((i = 0; i < nb_elementSelect; i++)); do
     ${selectDependancies[i]}
@@ -114,7 +116,7 @@ done
 cd "${path}" || exit
 git init
 git add .
-git commit -m "création du projet ${answer}"
+git commit -m "création du projet"
 bash "$(find ~/ -name git.sh)"
 bash "$(find ~/ -name finishProject.sh)"
 
