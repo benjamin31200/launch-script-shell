@@ -94,7 +94,6 @@ for ((e = 0; e < min; e++)); do
                 if [ "${answer}" == "react" ]; then
                     echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react: $norm$n"
                     read name
-                    path="$(pwd)"/"${name}"
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]} ${name}")
                 elif [ "${answer}" != "react" ]; then
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]}")
@@ -106,11 +105,16 @@ for ((e = 0; e < min; e++)); do
         done
     fi
 done
-echo "${!selectDependancies[0]}" 
-exit 0
 nb_elementSelect=${#selectDependancies[*]}
 for ((i = 0; i < nb_elementSelect; i++)); do
-    ${selectDependancies[i]}
+    if [ "${selectDependancies[i]}" != "${dependanciesLink[0]} ${name}" ]; then
+        ${selectDependancies[i]}
+    fi
+done
+for ((i = 0; i < nb_elementSelect; i++)); do
+    if [ "${selectDependancies[i]}" = "${dependanciesLink[0]} ${name}" ]; then
+        ${dependanciesLink[0]} "${name}"
+    fi
 done
 cd "${path}" || exit
 git init
