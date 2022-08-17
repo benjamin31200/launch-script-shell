@@ -75,7 +75,7 @@ declare -a dependanciesLink=([0]="npx create-react-app" [1]="npm install express
     [9]="npm install mysql" [10]="npm install --save mysql2" [11]="npm i joi"
     [12]="npm i argon2" [13]="npm install --save sequelize" [14]="npm install jsonwebtoken" [15]="npm i jwt-decode" [16]="npm i express-session"
     [17]="npm install sweetalert2" [18]="npm install cookie-parser" [19]="npm install --save sweetalert2-react-content"
-    [20]="npm i -g @nestjs/cli ; nest new" [21]="npm install --save multer" [22]="npm install mongoose --save" [23]="npm install axios"
+    [20]="npm i -g @nestjs/cli" [21]="npm install --save multer" [22]="npm install mongoose --save" [23]="npm install axios"
 )
 
 for ((e = 0; e < min; e++)); do
@@ -87,8 +87,13 @@ for ((e = 0; e < min; e++)); do
                 dependanciesName=("${dependanciesName[@]//"$redColor✘ ${answer} $norm"/"$blueColor✔ ${answer} $norm"}")
                 if [ "${answer}" == "react" ]; then
                     echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier react:$norm "
-                    read name
-                    selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]} ${name}")
+                    read nameReact
+                    selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]} ${nameReact}")
+                elif [ "${answer}" == "nestJS" ]; then
+                    echo -n -e "$doubleNext$insertColor Rentrer le nom du dossier nestJS:$norm "
+                    read nameNest
+                    selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]}")
+                    selectDependancies=("${selectDependancies[@]}" "nest new ${nameNest}")
                 elif [ "${answer}" != "react" ]; then
                     selectDependancies=("${selectDependancies[@]}" "${dependanciesLink[i]}")
                 elif [ "${baseName[i]}" != "$answer" ]; then
@@ -101,17 +106,10 @@ for ((e = 0; e < min; e++)); do
         done
     fi
 done
-
+echo "${selectDependancies[@]}"
 nb_elementSelect=${#selectDependancies[*]}
 for ((i = 0; i < nb_elementSelect; i++)); do
-    if [ "${selectDependancies[i]}" != "${dependanciesLink[0]} ${name}" ]; then
-        ${selectDependancies[i]}
-    fi
-done
-for ((i = 0; i < nb_elementSelect; i++)); do
-    if [ "${selectDependancies[i]}" = "${dependanciesLink[0]} ${name}" ]; then
-        ${dependanciesLink[0]} "${name}"
-    fi
+    ${selectDependancies[i]}
 done
 cd "${path}" || exit
 git init

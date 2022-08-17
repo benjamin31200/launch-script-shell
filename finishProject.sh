@@ -28,7 +28,7 @@ createProject() {
     else
         touch ~/bin/bash/name.sh
         touch ~/bin/bash/path.sh
-        chmod +x name.sh ; chmod +x path.sh
+        chmod +x ~/bin/bash/name.sh ; chmod +x ~/bin/bash/path.sh
         process "$1"
     fi
 }
