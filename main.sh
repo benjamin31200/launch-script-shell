@@ -21,8 +21,8 @@ countLines=$(wc --lines <"$(find ~/ -name path.sh)")
 min=1
 
 for ((i = 1; i < countLines + 1; i++)); do
-    path=$(sed -n "${i}"p path.sh)
-    project=$(sed -n "${i}"p name.sh)
+    path=$(sed -n "${i}"p "$(find ~/ -name path.sh)")
+    project=$(sed -n "${i}"p "$(find ~/ -name name.sh)")
     declare -a projectArray=("${projectArray[@]}" "${project}")
     declare -a pathArray=("${pathArray[@]}" "${path}")
 done
@@ -39,7 +39,7 @@ load_data() {
         ligne=$((rc / Colonnes))
         colonne=1
         ((index = i))
-        alpha[$index]=$(echo -e "$indicationColor2 ${projectArray[$i]}$norm ✒ $indicationItalic ${pathArray[$i]} $norm")
+        alpha[$index]=$(echo -e "$indicationColor2 ➩ ${projectArray[$i]}$norm ✒ $indicationItalic ${pathArray[$i]} $norm")
         ((rc += 1))
     done
 }
@@ -53,7 +53,7 @@ affiche_data() {
     while [ "$ligne" -lt "$Lignes" ]; do
         local colonne=0
 
-        echo -e -n "          $indicationColor2$ligne ▶$norm "
+        echo -e -n "          $indicationColor2$ligne$norm "
 
         while [ "$colonne" -lt "$Colonnes" ]; do
             ((index = ligne))
@@ -72,8 +72,7 @@ affiche_data
 printf "$n$insertColor Copier le chemin du projet à passer en principal%s$norm"
 printf "$n$tab$answerColor Appuyer sur $norm${hugeIndicationColor}entrée%s$norm"
 printf "$n$tab$answerColor Appuyer sur $norm${hugeIndicationColor}CTRL+D%s$norm$n"
-if [ -e "${path}" ]; then
-    cat > "$(find ~/ -name mainProject.sh)"
+if [ -d "$(cat >"$(find ~/ -name mainProject.sh)")" ]; then
     printf "$answerColor Changement réussi %s$n$norm"
     bash "$(find ~/ -name menu.sh)"
 else

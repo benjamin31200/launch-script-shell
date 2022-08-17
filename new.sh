@@ -10,37 +10,34 @@ indicationColor='\033[3;32m'
 hugeIndicationColor='\033[5;37;41m'
 exampleColor='\033[01;34m'
 norm='\033[0m'
-n='\n'
+n=$'\n'
 doubleNext=$'\n\n'
 tab=$'\t\t'
-yes=y
-non=n
-date=$(date +%d-%m-%Y)
-pseudo=$(git config --global user.name)
 path=~/
 
 addDir() {
     min=1
     printf "${insertColor}Rentrer le nom du dossier à chaque demande, s'il n'existe pas le créera automatiquement. %s$n${norm}"
-    printf "${importantColor}IMPORTANT sans les / %s$n${norm}"
-    printf "${insertColor}Taper ${norm}${hugeIndicationColor}exit${norm}${insertColor} pour confirmer le chemin et passer à la suite.%s$n${norm}"
-    printf "${insertColor}Taper ${norm}${hugeIndicationColor}l${norm}${insertColor} pour inspecter le répertoire courant.%s$n${norm}"
+    printf "${importantColor}IMPORTANT sans les / %s$doubleNext${norm}"
+    printf "${indicationColor}Taper ${norm}${hugeIndicationColor}exit${norm}${indicationColor} pour confirmer le chemin et passer à la suite.%s$n${norm}"
+    printf "${indicationColor}Taper ${norm}${hugeIndicationColor}liste${norm}${indicationColor} pour inspecter le répertoire courant.%s$doubleNext${norm}"
     for ((i = 0; i < min; i++)); do
-        echo -n -e "${insertColor}Nom du dossier: $n${norm}"
+        echo -n -e "${insertColor}Nom du dossier: ${norm}"
         read dir
-        if [ "${dir}" != "exit" ] && [ "${dir}" != "l" ]; then
+        if [ "${dir}" != "exit" ] && [ "${dir}" != "liste" ]; then
             path+="${dir}"/
             ((min += 1))
             if [ -d "$(find ~/ -wholename "${path%?}")" ]; then
-                printf "${successColor}Ce dossier existe.%s$n${norm}"
+                printf "$n${successColor}Ce dossier existe.%s$n${norm}"
             else
                 printf "${creationColor}Création du dossier.%s$n${norm}"
                 mkdir "${path}"
             fi
             printf "${insertColor}Aperçu du chemin: ${norm}${exampleColor}${path}${norm}%s$doubleNext"
+            printf "$tab${hugeIndicationColor}exit${norm} / ${hugeIndicationColor}liste${norm}$n%s"
         elif [ "${dir}" = "exit" ]; then
             printf "${insertColor} Sortie...%s$n${norm}"
-        elif [ "${dir}" = "l" ]; then
+        elif [ "${dir}" = "liste" ]; then
             cd "${path}" || exit
             ls
             ((min += 1))
