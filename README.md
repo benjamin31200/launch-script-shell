@@ -14,7 +14,8 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 2. [Lancement du Script](#lancement)
 3. [Création d'un répertoire](#répertoire)
 4. [Création d'un projet avec des dépendances préconfigurées](#full)
-5. [Création du dépot distant git et liaison avec le dépot local](#git)
+5. [Création du dépot distant git et liaison avec le dépot local](#git)Sources
+6. [Sources](#sources)
 
 ***
 
@@ -55,7 +56,7 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 ## Création d'un projet avec des dépendances préconfigurées
 <a name="full"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img923/1964/XFb1oP.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img924/9575/hS1MZw.gif" width = 800 height="450">
 </p>
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
@@ -88,4 +89,4 @@ Les deux sites regroupant la plupart des notions utiles aux scripts shell.
 [Doc officiel ubuntu](https://doc.ubuntu-fr.org/tutoriel/script_shell)
 
 [Guide avancé](https://abs.traduc.org/abs-fr/index.html)
-# dd
+
