@@ -2,15 +2,18 @@
 # Développement d'un programme interprétant plusieurs script shell. Ecrit en shell bash s'éxécutant sur les systèmes GNU/Linux/WSL
 ***
 
-Permet d'automatiser certaines commandes/actions répétitives au sein du terminal, sans aucunes commandes et majoritairement éxécutable en copier/coller:
+Permet d'automatiser certaines commandes/actions répétitives au sein du terminal:
 * Démarrer le serveur Mysql et lancer son projet du moment
 * Créer des projets dans des répertoires spécifiques 
 * Ajouter des dépendances
 * Créer son dépot Github (local et distant)
 * Lancer/sauvegarder/supprimer ses projets configurer rapidement
 
+Majoritairement éxécutable en copier/coller(double clic gauche/double clic droit), le script est très intuitif et abordable.
+Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande shell(bash), comprendre et appréhender comment fonctionne un système d'exploitation et comment l'optimiser et le rendre plus fluide grâce aux scripts éxécutables depuis un terminal.
+
 ## Sommaire
-1. [Prérequis](#prérequis)
+1. [Ressources requises pour le fontionnement](#prérequis)
 2. [Lancement du Script](#lancement)
 3. [Création d'un répertoire](#répertoire)
 4. [Création d'un projet avec des dépendances préconfigurées](#full)
@@ -19,9 +22,9 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 
 ***
 
-## Prérequis
+## Ressources requises pour le fontionnement
 <a name="prérequis"></a>
-* Sous-système linux windows (WSL) / système d'exploitation open source de type Unix (GNU/Linux). 
+* Sous-système linux windows (WSL) ou un système d'exploitation open source de type Unix (GNU/Linux). 
 * Visual studio code.
 * Mysql
 * GitHub / GitHub CLI
