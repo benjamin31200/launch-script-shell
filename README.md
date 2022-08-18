@@ -14,7 +14,7 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 2. [Lancement du Script](#lancement)
 3. [Création d'un répertoire](#répertoire)
 4. [Création d'un projet avec des dépendances préconfigurées](#full)
-5. [Configurer le projet avec la librairie react](#react)
+5. [Création du dépot distant git et liaison avec le dépot local](#git)
 
 ***
 
@@ -63,15 +63,15 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 <h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
 
 ***
-## Configurer le projet avec la librairie react
-<a name="react"></a>
+## Création du dépot distant git et liaison avec le dépot local
+<a name="git"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/977/tS1Z2P.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img924/2748/W4r9Tv.gif" width = 800 height="450">
 </p>
 
-<h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
+<h4 align="center">L'authentification est assurée grâce à github CLI.</h4>
 
-<h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
+<h4 align="center">Choisir le nom ainsi que la visibilité du répository.</h4>
 
 
 
