@@ -24,8 +24,8 @@ createGit() {
 
 init() {
     printf "${doubleNext}${tab}$answerColor Création du package.json en cours... %s$norm$doubleNext"
-    npm init
     touch .gitignore
+    npm init
     git add .
     git commit -m "npm init"
     git push origin master

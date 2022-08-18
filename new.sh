@@ -18,12 +18,12 @@ addDir() {
     min=1
     printf "${insertColor}Rentrer le nom du dossier à chaque demande, s'il n'existe pas le créera automatiquement. %s$n${norm}"
     printf "${importantColor}IMPORTANT sans les / %s$doubleNext${norm}"
-    printf "${indicationColor}Taper ${norm}${hugeIndicationColor}exit${norm}${indicationColor} pour confirmer le chemin et passer à la suite.%s$n${norm}"
+    printf "${indicationColor}Taper ${norm}${hugeIndicationColor}terminer${norm}${indicationColor} pour confirmer le chemin et passer à la suite.%s$n${norm}"
     printf "${indicationColor}Taper ${norm}${hugeIndicationColor}liste${norm}${indicationColor} pour inspecter le répertoire courant.%s$doubleNext${norm}"
     for ((i = 0; i < min; i++)); do
         echo -n -e "${insertColor}Nom du dossier: ${norm}$n"
         read dir
-        if [ "${dir}" != "exit" ] && [ "${dir}" != "liste" ]; then
+        if [ "${dir}" != "terminer" ] && [ "${dir}" != "liste" ]; then
             path+="${dir}"/
             ((min += 1))
             if [ -d "$(find ~/ -wholename "${path%?}")" ]; then
@@ -33,8 +33,8 @@ addDir() {
                 mkdir "${path}"
             fi
             printf "${insertColor}Aperçu du chemin: ${norm}${exampleColor}${path}${norm}%s$doubleNext"
-            printf "$tab${hugeIndicationColor}exit${norm} / ${hugeIndicationColor}liste${norm}$n%s"
-        elif [ "${dir}" = "exit" ]; then
+            printf "$tab${hugeIndicationColor}terminer${norm} / ${hugeIndicationColor}liste${norm}$n%s"
+        elif [ "${dir}" = "terminer" ]; then
             printf "${insertColor} Sortie...%s$n${norm}"
         elif [ "${dir}" = "liste" ]; then
             cd "${path}" || exit
@@ -45,9 +45,9 @@ addDir() {
 }
 
 createGitClone() {
-    echo -n -e "${insertColor}Copier l'adresse https du dépot: ${norm}"
+    echo -n -e "${insertColor}Copier l'adresse SSH du dépot: ${norm}"
     read adress
-    gh repo clone "${adress}"
+    git clone "${adress}"
     printf "${answerColor} Repository cloner localement. %s"
 }
 
@@ -89,7 +89,7 @@ menu)
 gitClone)
     cd "${path}" || exit
     isGH createGitClone
-    createProject "${path%?}"
+    bash "$(find ~/ -name finishProject.sh)"
     printf "${answerColor} Projet enregistré ! %s$n${norm}"
     bash "$(find ~/ -name menu.sh)"
     ;;
