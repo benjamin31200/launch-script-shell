@@ -2,16 +2,24 @@
 # Développement d'un programme interprétant plusieurs script shell bash.
 ***
 
-Permet d'automatiser certaines commandes/actions répétitives au sein du terminal:
-* Démarrer le serveur Mysql et lancer son projet du moment
+Automatise certaines commandes/actions répétitives au sein du terminal:
+* Démarrer le serveur Mysql et lancer son projet principal
 * Créer des projets dans des répertoires spécifiques 
 * Ajouter des dépendances
 * Créer son dépot Github (local et distant)
-* Lancer/sauvegarder/supprimer ses projets configurer rapidement
+* Lancer/sauvegarder/supprimer ses projets configurés
 
 Majoritairement éxécutable en copier/coller(double clic gauche/double clic droit), le script est très intuitif et abordable.
 
-Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande shell(bash), comprendre et appréhender comment fonctionne un système d'exploitation et comment l'optimiser et le rendre plus fluide grâce aux scripts éxécutables depuis un terminal.
+Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande shell(bash).
+
+L'intérêt latent durant l'écriture des scripts est apparu à la suite de l'approfondissement des différentes documentations receuillis sur internet, ma vision intrinsèque des systèmes d'exploitations, et plus précisément celui concernant linux à franchi une barrière et un cap grâce à ce petit projet et l'optimiser dans le futur pour le rendre plus fluide, manipulable et fructueux pourrait s'avérer bénéfique pour des cas de figure précis. 
+
+Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une recherche pragmatique et éducative afin d'améliorer ma logique algorithmique avec une très belle partie lié à l'ajout de dépendance présélectionnable pour son projet, une journée complète et quelques lignes plus tard:
+
+<p align = "center">
+  <img src = "https://i.ibb.co/VCGNVxW/extrait-code-script.png" width = 800 height="400">
+</p>
 
 ## Sommaire
 1. [Ressources requises pour le fontionnement](#prérequis)
@@ -36,7 +44,7 @@ Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande
 
 <a name="lancement"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/9017/Y351Bk.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img922/9017/Y351Bk.gif" width = 900 height="500">
 </p>
 
 <h4 align="center">Le script démarre quand la commande personnalisé go est taper dans la console.</h4>
@@ -49,7 +57,7 @@ Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande
 ## Création d'un répertoire
 <a name="répertoire"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/5500/bwoVzS.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img922/5500/bwoVzS.gif" width = 900 height="500">
 </p>
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
@@ -60,7 +68,7 @@ Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande
 ## Création d'un projet avec des dépendances préconfigurées
 <a name="full"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img924/9575/hS1MZw.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img924/9575/hS1MZw.gif" width = 900 height="500">
 </p>
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
@@ -71,7 +79,7 @@ Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande
 ## Création du dépot distant git et liaison avec le dépot local
 <a name="git"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img924/2748/W4r9Tv.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img924/2748/W4r9Tv.gif" width = 900 height="500">
 </p>
 
 <h4 align="center">L'authentification est assurée grâce à github CLI.</h4>
