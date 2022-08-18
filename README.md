@@ -1,65 +1,86 @@
+
+# Développement d'un programme interprétant plusieurs script shell. Ecrit en shell bash s'éxécutant sur les systèmes GNU/Linux/WSL
+***
+
+Permet d'automatiser certaines commandes/actions répétitives au sein du terminal, sans aucunes commandes et majoritairement éxécutable en copier/coller:
+* Démarrer le serveur Mysql et lancer son projet du moment
+* Créer des projets dans des répertoires spécifiques 
+* Ajouter des dépendances
+* Créer son dépot Github (local et distant)
+* Lancer/sauvegarder/supprimer ses projets configurer rapidement
+
+## Sommaire
+1. [Prérequis](#prérequis)
+2. [Lancement du Script](#lancement)
+3. [Création d'un répertoire](#répertoire)
+4. [Création d'un projet avec des dépendances préconfigurées](#full)
+5. [Création du dépot distant git et liaison avec le dépot local](#git)
+
+***
+
+## Prérequis
+<a name="prérequis"></a>
+* Sous-système linux windows (WSL) / système d'exploitation open source de type Unix (GNU/Linux). 
+* Visual studio code.
+* Mysql
+* GitHub / GitHub CLI
+
+***
+
+## Lancement du Script
+
+<a name="lancement"></a>
 <p align = "center">
-  <img src = "https://th.bing.com/th/id/OIP.bMPJwMQjUjRQi4lImi4iRwHaDH?w=300&h=146&c=7&r=0&o=5&pid=1.7" width = 400 height="200">
+  <img src = "https://imagizer.imageshack.com/img922/9017/Y351Bk.gif" width = 800 height="450">
 </p>
 
-# Script shell s'éxécutant sous la version WSL2 Ubuntu
+<h4 align="center">Le script démarre quand la commande personnalisé go est taper dans la console.</h4>
+
+<h4 align="center">Commence par lancer le serveur Mysql.</h4>
+
+<h4 align="center">Si un projet principal est configurer, possibilité de le lancer.</h4>
+
 ***
-## Sommaire
-1. [Instructions/Test](#general-info)
-2. [Mise en place](#mise-en-place)
-3. [Sources](#sources)
+## Création d'un répertoire
+<a name="répertoire"></a>
+<p align = "center">
+  <img src = "https://imagizer.imageshack.com/img922/5500/bwoVzS.gif" width = 800 height="450">
+</p>
+
+<h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
+
+<h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
+
 ***
-Réalisation d'un script shell pour la version du sous-système windows ubuntu WSL2.
-Il permet d'automatiser certaines commandes répétitives au lancement du terminale.
+## Création d'un projet avec des dépendances préconfigurées
+<a name="full"></a>
+<p align = "center">
+  <img src = "https://imagizer.imageshack.com/img923/1964/XFb1oP.gif" width = 800 height="450">
+</p>
+
+<h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
+
+<h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
+
 ***
+## Création du dépot distant git et liaison avec le dépot local
+<a name="git"></a>
+<p align = "center">
+  <img src = "https://imagizer.imageshack.com/img924/2748/W4r9Tv.gif" width = 800 height="450">
+</p>
 
-### Instructions
-<a name="general-info"></a>
-#### Prérequis :
-* [sous-système linux ubuntu](https://docs.microsoft.com/fr-fr/windows/wsl/install): Version 20.04
-* [Mysql](https://harshityadav95.medium.com/installing-mysql-in-ubuntu-linux-windows-subsystem-for-linux-from-scratch-d5771a4a2496): Version Ver 8.0.30-0ubuntu0.20.04.2
+<h4 align="center">L'authentification est assurée grâce à github CLI.</h4>
 
-#### Création du script :
-**Depuis votre terminal ubuntu**
-```
- mkdir script ; cd script ; touch script.sh ; code script.sh
-```
-**OU**
-```
- mkdir script ; cd script ; touch script.sh ; nano script.sh
-```
-Copier coller le script dans le fichier et l'enregister
-
-**OU**
-```
- git clone git@github.com:benjamin31200/script_Shell.git ; cd script_shell ; nano script.sh
-```
-
-* Lire les commentaires marqués par un #.
-* modifier la ligne 27 par le chemin de votre projet actuel.
-* Tester.
+<h4 align="center">Choisir le nom ainsi que la visibilité du répository.</h4>
 
 
-**Lancement du script depuis la console pour des tests**
-```
- bash ~/script.sh
-```
-***
-### Faire en sorte que le script fonctionne à l'ouverture d'une fenêtre de terminal :
-<a name="mise-en-place"></a>
-**Copier/coller le script à la toute fin du fichier .bashrc sans altérer le reste du code**
-```
- code ~/.bashrc
-```
-**OU**
-```
- nano ~/.bashrc
-```
-**Enregistrer et relancer le terminal ou alors depuis une console windows powershell**
-```
- wsl --shutdown
-```
-***
+
+
+
+
+
+
+
 ### Sources
 <a name="sources"></a>
 Les deux sites regroupant la plupart des notions utiles aux scripts shell.
