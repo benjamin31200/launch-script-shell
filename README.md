@@ -14,6 +14,7 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 2. [Lancement du Script](#lancement)
 3. [Création d'un répertoire](#répertoire)
 4. [Création d'un projet avec des dépendances préconfigurées](#full)
+5. [Configurer le projet avec la librairie react](#react)
 
 ***
 
@@ -55,6 +56,17 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 <a name="full"></a>
 <p align = "center">
   <img src = "https://imagizer.imageshack.com/img923/1964/XFb1oP.gif" width = 800 height="450">
+</p>
+
+<h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
+
+<h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
+
+***
+## Configurer le projet avec la librairie react
+<a name="react"></a>
+<p align = "center">
+  <img src = "https://imagizer.imageshack.com/img923/4959/gh1KwO.gif" width = 800 height="450">
 </p>
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
