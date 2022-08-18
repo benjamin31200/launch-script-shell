@@ -1,5 +1,5 @@
 
-# Développement d'un programme interprétant plusieurs script shell. Ecrit en shell bash s'éxécutant sur les systèmes GNU/Linux/WSL
+# Développement d'un programme interprétant plusieurs script shell bash.
 ***
 
 Permet d'automatiser certaines commandes/actions répétitives au sein du terminal:
