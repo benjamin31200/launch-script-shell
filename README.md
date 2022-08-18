@@ -18,7 +18,7 @@ Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande
 2. [Lancement du Script](#lancement)
 3. [Création d'un répertoire](#répertoire)
 4. [Création d'un projet avec des dépendances préconfigurées](#full)
-5. [Création du dépot distant git et liaison avec le dépot local](#git)Sources
+5. [Création du dépot distant git et liaison avec le dépot local](#git)
 6. [Sources](#sources)
 
 ***
@@ -79,16 +79,9 @@ Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande
 <h4 align="center">Choisir le nom ainsi que la visibilité du répository.</h4>
 
 
-
-
-
-
-
-
-
 ### Sources
 <a name="sources"></a>
-Les deux sites regroupant la plupart des notions utiles aux scripts shell.
+Sites regroupant la plupart des notions utiles aux scripts shell.
 
 [Doc officiel ubuntu](https://doc.ubuntu-fr.org/tutoriel/script_shell)
 
