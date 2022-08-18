@@ -10,6 +10,7 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 * Lancer/sauvegarder/supprimer ses projets configurer rapidement
 
 Majoritairement éxécutable en copier/coller(double clic gauche/double clic droit), le script est très intuitif et abordable.
+
 Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande shell(bash), comprendre et appréhender comment fonctionne un système d'exploitation et comment l'optimiser et le rendre plus fluide grâce aux scripts éxécutables depuis un terminal.
 
 ## Sommaire
