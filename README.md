@@ -66,7 +66,7 @@ Permet d'automatiser certaines commandes/actions répétitives au sein du termin
 ## Configurer le projet avec la librairie react
 <a name="react"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img923/1964/XFb1oP.gif" width = 800 height="450">
+  <img src = "https://imagizer.imageshack.com/img923/4959/gh1KwO.gif" width = 800 height="450">
 </p>
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
