@@ -18,13 +18,13 @@ Un intérêt latent durant l'écriture des scripts est apparu à la suite de l'a
 Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une recherche pragmatique et éducative afin d'améliorer ma logique algorithmique avec une très belle partie sur la section lié à l'ajout de dépendance présélectionnable pour constituer son projet, une journée complète et quelques lignes plus tard:
 
 <p align = "center">
-  <img src = "https://i.ibb.co/VCGNVxW/extrait-code-script.png" width = 800 height="400">
+  <img src = "https://i.ibb.co/VCGNVxW/extrait-code-script.png" width = 900 height="450">
 </p>
 
 ## Sommaire
 1. [Ressources requises pour le fontionnement](#prérequis)
 2. [Lancement du Script](#lancement)
-3. [Création d'un répertoire](#répertoire)
+3. [Création d'un projet](#projet)
 4. [Création d'un projet avec des dépendances préconfigurées](#full)
 5. [Création du dépot distant git et liaison avec le dépot local](#git)
 6. [Sources](#sources)
@@ -54,8 +54,8 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 <h4 align="center">Si un projet principal est configurer, possibilité de le lancer.</h4>
 
 ***
-## Création d'un répertoire
-<a name="répertoire"></a>
+## Création d'un projet
+<a name="projet"></a>
 <p align = "center">
   <img src = "https://imagizer.imageshack.com/img922/5500/bwoVzS.gif" width = 900 height="500">
 </p>
@@ -71,9 +71,9 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
   <img src = "https://imagizer.imageshack.com/img924/9575/hS1MZw.gif" width = 900 height="500">
 </p>
 
-<h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
+<h4 align="center">Sélection de l'option d'ajout de dépendances.</h4>
 
-<h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
+<h4 align="center">Ici, une préconfiguration "full" est prise permettant d'installer directement des projets liés à des librairies.</h4>
 
 ***
 ## Création du dépot distant git et liaison avec le dépot local
@@ -85,6 +85,8 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 <h4 align="center">L'authentification est assurée grâce à github CLI.</h4>
 
 <h4 align="center">Choisir le nom ainsi que la visibilité du répository.</h4>
+
+<h4 align="center">Grâce aux commandes internes de github CLI, la liaison local/distant est instantanée.</h4>
 
 
 ### Sources
