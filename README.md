@@ -18,7 +18,7 @@ Un intérêt latent durant l'écriture des scripts est apparu à la suite de l'a
 Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une recherche pragmatique et éducative afin d'améliorer ma logique algorithmique avec une très belle partie sur la section lié à l'ajout de dépendance présélectionnable pour constituer son projet, une journée complète et quelques lignes plus tard:
 
 <p align = "center">
-  <img src = "https://i.ibb.co/VCGNVxW/extrait-code-script.png" width = 900 height="450">
+  <img src="https://i.ibb.co/k8XXxjt/loop-script.png" alt="loop-script" witborder="0">
 </p>
 
 ## Sommaire
