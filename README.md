@@ -47,11 +47,11 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
   <img src = "https://imagizer.imageshack.com/img922/9017/Y351Bk.gif" width = 900 height="500">
 </p>
 
-<h4 align="center">Le script démarre quand la commande personnalisé go est taper dans la console.</h4>
+<h4 align="center">Le script démarre quand la commande personnalisée "go" est tapée dans la console.</h4>
 
 <h4 align="center">Commence par lancer le serveur Mysql.</h4>
 
-<h4 align="center">Si un projet principal est configurer, possibilité de le lancer.</h4>
+<h4 align="center">Si un projet principal est configuré, possibilité de le lancer.</h4>
 
 ***
 ## Création d'un projet
@@ -62,7 +62,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
 
-<h4 align="center">Le chemin est sauvegarder à chaque itération.</h4>
+<h4 align="center">Le chemin est sauvegardé à chaque itération.</h4>
 
 ***
 ## Création d'un projet avec des dépendances préconfigurées
