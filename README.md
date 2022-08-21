@@ -47,6 +47,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 * Visual studio code.
 * Mysql
 * GitHub / GitHub CLI
+* L'installation des packages via NPM
 
 ***
 
