@@ -48,7 +48,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 
 <a name="lancement"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/9017/Y351Bk.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img922/9017/Y351Bk.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">Le script démarre quand la commande personnalisée "go" est tapée dans la console.</h4>
@@ -61,7 +61,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Création d'un projet
 <a name="projet"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/5500/bwoVzS.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img922/5500/bwoVzS.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">Créer un dossier s'il n'existe pas et se déplace dedans.</h4>
@@ -72,7 +72,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Création d'un projet avec des dépendances préconfigurées
 <a name="full"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img924/9575/hS1MZw.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img924/8282/jlTbi3.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">Sélection de l'option d'ajout de dépendances.</h4>
@@ -83,7 +83,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Projet préconfiguré React
 <a name="react"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img924/4207/7H05vx.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img923/1884/jdr2g6.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">Sélection de l'option d'ajout de dépendances.</h4>
@@ -94,7 +94,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Création du dépot distant git et liaison avec le dépot local
 <a name="git"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img924/2748/W4r9Tv.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img924/5805/S86cNu.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">L'authentification est assurée grâce à github CLI.</h4>
@@ -107,7 +107,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Configuration du package.json
 <a name="json"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img923/917/HjKsfR.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img924/6906/V2rVVS.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">utilisation de la commande npm init pour configurer le package.json.</h4>
@@ -118,7 +118,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Enregistrement d'un projet
 <a name="save"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/9342/jDQGlB.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img922/9342/jDQGlB.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">Enregistrement dans un fichier distinct de chemin d'accès complet au projet.</h4>
@@ -135,7 +135,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 ## Lancement d'un projet
 <a name="launch"></a>
 <p align = "center">
-  <img src = "https://imagizer.imageshack.com/img922/6818/vXybaP.gif" width = 800 height="500">
+  <img src = "https://imagizer.imageshack.com/img922/6818/vXybaP.gif" width = 850 height="500">
 </p>
 
 <h4 align="center">Depuis le menu il est possible de lancer un projet spécifique, en copiant collant le chemin complet.</h4>
