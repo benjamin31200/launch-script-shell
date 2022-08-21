@@ -13,9 +13,9 @@ Majoritairement exécutable en copier/coller(double clic gauche/double clic droi
 
 Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande shell(bash).
 
-Un intérêt latent durant l'écriture des scripts est apparu à la suite de l'approfondissement des différentes documentations recueillis sur internet, ma vision intrinsèque des systèmes d'exploitation, et plus précisément celui concernant linux à franchi une barrière et un cap sur le fonctionnement interne grâce aux nombreuses commandes existantes, marié à la programmation on peut clairement comprendre comment certaines personnes malveillantes peuvent annihiler des pc avec des scripts malveillants. 
+Un intérêt latent durant l'écriture des scripts est apparu à la suite de l'approfondissement des différentes documentations recueillis sur internet, ma vision intrinsèque des systèmes d'exploitation, et plus précisément celui concernant linux à franchi un cap sur son fonctionnement interne grâce aux nombreuses commandes existantes, marié à la programmation on peut clairement comprendre comment certaines personnes aux intentions malveillantes peuvent annihiler des pc avec de puissants scripts. 
 
-Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une recherche pragmatique et éducative afin d'améliorer ma logique algorithmique avec une très belle partie sur la section lié à l'ajout de dépendance présélectionnable pour constituer son projet, une journée complète et quelques lignes plus tard:
+Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une recherche éducative et pragmatique afin d'améliorer ma logique algorithmique avec une très belle partie sur la section lié à l'ajout de dépendance présélectionnable pour constituer son projet, une journée complète et quelques lignes plus tard:
 
 <p align = "center">
   <img src="https://i.ibb.co/k8XXxjt/loop-script.png" alt="loop-script" witborder="0">
