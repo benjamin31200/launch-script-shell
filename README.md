@@ -30,7 +30,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 6. [Création du dépot distant git et liaison avec le dépot local](#git)
 7. [Configuration du package.json](#json)
 8. [Enregistrement d'un projet](#save)
-9. [Démarrage d'un projet](#launch)
+9. [Lancement d'un projet](#launch)
 17. [Sources](#sources)
 
 ***
@@ -132,7 +132,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
 </p>
 
 ***
-## Démarrage d'un projet
+## Lancement d'un projet
 <a name="launch"></a>
 <p align = "center">
   <img src = "https://imagizer.imageshack.com/img922/6818/vXybaP.gif" width = 900 height="500">
