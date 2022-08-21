@@ -13,7 +13,7 @@ Majoritairement exécutable en copier/coller(double clic gauche/double clic droi
 
 Sur une dizaine de jours j'ai découvert le monde des interpréteurs de commande shell(bash).
 
-Un intérêt latent durant l'écriture des scripts est apparu à la suite de l'approfondissement des différentes documentations recueillis sur internet, ma vision intrinsèque des systèmes d'exploitation, et plus précisément celui concernant linux à franchi un cap sur son fonctionnement interne grâce aux nombreuses commandes existantes, marié à la programmation on peut clairement comprendre comment certaines personnes aux intentions malveillantes peuvent annihiler des pc avec de puissants scripts. 
+Un intérêt latent durant l'écriture des scripts est apparu à la suite de l'approfondissement des différentes documentations recueillis sur internet, ma vision intrinsèque des systèmes d'exploitation, et plus précisément celui concernant linux à franchi un cap sur son fonctionnement grâce aux nombreuses commandes existantes, marié à la programmation on peut clairement comprendre comment certaines personnes aux intentions malveillantes peuvent annihiler des pc avec de puissants scripts ou au contraire faire en sorte d'optimiser de puissants scripts pour en tirer bénéfiquement des gains de temps.  
 
 Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une recherche éducative et pragmatique afin d'améliorer ma logique algorithmique avec une très belle partie sur la section lié à [Création d'un projet configurable](#empty), une journée complète et quelques lignes plus tard:
 
