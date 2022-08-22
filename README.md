@@ -202,7 +202,7 @@ Cela dit, l'intérêt non latent pour le coup reposait essentiellement sur une r
   <img src = "https://imagizer.imageshack.com/img922/179/py8igO.gif" width = 900 height="500">
 </p>
 
-<h4 align="center">Pour enregistrer un rpojet déjà créé, il suffit simplement de taper son nom.</h4>
+<h4 align="center">Pour enregistrer un projet déjà créé, il suffit simplement de taper son nom.</h4>
 
 <h4 align="center">Autrement, on le retrouve en affichant tous les projets contenant un .gitignore ou en recherchant parmi les initialisations récentes.</h4>
 
